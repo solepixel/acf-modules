@@ -1,0 +1,24 @@
+{
+  "name": "acf-modules",
+  "version": "1.0.0",
+  "private": true,
+  "devDependencies": {
+    "gulp": "^3.8.11",
+    "gulp-autoprefixer": "*",
+    "gulp-cache": "*",
+    "gulp-compass": "*",
+    "gulp-concat": "*",
+    "gulp-imagemin": "*",
+    "gulp-jshint": "*",
+    "gulp-livereload": "*",
+    "gulp-load-plugins": "^0.10.0",
+    "gulp-minify-css": "*",
+    "gulp-notify": "*",
+    "gulp-plumber": "*",
+    "gulp-rename": "*",
+    "gulp-ruby-sass": "*",
+    "gulp-uglify": "*",
+    "gulp-util": "^3.0.4",
+    "gulp-watch": "*"
+  }
+}

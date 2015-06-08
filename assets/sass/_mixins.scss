@@ -1,0 +1,20 @@
+/**
+ * Responsive Mixins
+ * @param  {int} $px: 0  Max Width
+ */
+@mixin responsive( $px: 0 ) {
+	$rems: $px / 16;
+	@media only screen and (max-width: #{$rems}em) {
+		@content;
+	}
+}
+
+/**
+ * Common Mixins
+ * @return {[type]} [description]
+ */
+@mixin clearfix(){
+	clear:both;
+	content:'';
+	display:table;
+}

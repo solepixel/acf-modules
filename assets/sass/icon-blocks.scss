@@ -1,0 +1,123 @@
+@import "mixins";
+
+/**
+ * Icon blocks
+ */
+
+.module-icon_blocks .wrap {
+	@include responsive( 600 ){
+		padding-left:0;
+		padding-right:0;
+	}
+}
+.icon-blocks,
+.entry-content ul.icon-blocks {
+	list-style: none;
+	padding:30px 0;
+	margin-bottom:0;
+	margin-left:0;
+
+	li {
+		float:left;
+		width:16.66%;
+		padding:20px 10px;
+		text-align: center;
+		min-height: 100%;
+		list-style: none;
+		transition: all .2s ease-in-out;
+		margin-bottom:30px;
+
+		a {
+			display: block;
+			padding:0 15px;
+
+			span {
+				display: block;
+			}
+
+			.icon {
+				display: block;
+				width:128px;
+				height:128px;
+				margin:0 auto 5px;
+				background-size:contain;
+				background-repeat: no-repeat;
+			}
+
+			.heading {
+				display: block;
+				font-size: 120%;
+				margin-bottom:5px;
+			}
+
+			.text {
+				font-size:90%;
+			}
+
+			&:hover {
+				text-decoration: none;
+			}
+		}
+
+		&:last-child {
+			border-right:0;
+		}
+	}
+
+	&.count-1 li {
+		float:none;
+	}
+	&.count-2 li {
+		width:50%;
+	}
+	&.count-3 li {
+		width:33.33%;
+		@include responsive( 800 ){
+			width:100%;
+			float:none;
+		}
+	}
+	&.count-6 li {
+		width:33.33%;
+		@include responsive( 800 ){
+			width:50%;
+		}
+		@include responsive( 540 ){
+			width:100%;
+			float:none;
+		}
+	}
+	&.count-4 li,
+	&.count-7 li,
+	&.count-8 li {
+		width:25%;
+		@include responsive( 800 ){
+			width:50%;
+		}
+		@include responsive( 540 ){
+			width:100%;
+			float:none;
+		}
+	}
+	&.count-5 li,
+	&.count-9 li,
+	&.count-10 li {
+		width:20%;
+		@include responsive( 800 ){
+			width:50%;
+		}
+		@include responsive( 540 ){
+			width:100%;
+			float:none;
+		}
+	}
+
+	& li:hover {
+		transform: scale(1.05);
+		background-color:#FFF;
+	}
+
+	&:after {
+		@include clearfix();
+	}
+}

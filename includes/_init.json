@@ -1,0 +1,44 @@
+[
+  {
+    "key":"group_543c1c5fdde54",
+    "title":"Content Modules",
+    "fields":[
+      {
+        "key":"field_543d7bc015b3d",
+        "label":"Modules",
+        "name":"_acfmod_modules",
+        "type":"flexible_content",
+        "instructions":"Create many different types of content by selecting the module and filling in the fields.",
+        "required":0,
+        "conditional_logic":0,
+        "wrapper":{
+          "width":"",
+          "class":"",
+          "id":""
+        },
+        "button_label":"Add Module",
+        "min":0,
+        "max":"",
+        "layouts":[]
+      }
+    ],
+    "location":[
+      [
+        {
+          "param":"post_type",
+          "operator":"==",
+          "value":"page"
+        }
+      ]
+    ],
+    "menu_order":10,
+    "position":"normal",
+    "style":"default",
+    "label_placement":"top",
+    "instruction_placement":"label",
+    "hide_on_screen":[
+      "the_content",
+      "excerpt"
+    ]
+  }
+]

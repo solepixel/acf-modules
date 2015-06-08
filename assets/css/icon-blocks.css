@@ -1,0 +1,168 @@
+/**
+ * Responsive Mixins
+ * @param  {int} $px: 0  Max Width
+ */
+/**
+ * Common Mixins
+ * @return {[type]} [description]
+ */
+/**
+ * Icon blocks
+ */
+@media only screen and (max-width: 37.5em) {
+  .module-icon_blocks .wrap {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.icon-blocks,
+.entry-content ul.icon-blocks {
+  list-style: none;
+  padding: 30px 0;
+  margin-bottom: 0;
+  margin-left: 0;
+}
+.icon-blocks li,
+.entry-content ul.icon-blocks li {
+  float: left;
+  width: 16.66%;
+  padding: 20px 10px;
+  text-align: center;
+  min-height: 100%;
+  list-style: none;
+  -webkit-transition: all .2s ease-in-out;
+          transition: all .2s ease-in-out;
+  margin-bottom: 30px;
+}
+.icon-blocks li a,
+.entry-content ul.icon-blocks li a {
+  display: block;
+  padding: 0 15px;
+}
+.icon-blocks li a span,
+.entry-content ul.icon-blocks li a span {
+  display: block;
+}
+.icon-blocks li a .icon,
+.entry-content ul.icon-blocks li a .icon {
+  display: block;
+  width: 128px;
+  height: 128px;
+  margin: 0 auto 5px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.icon-blocks li a .heading,
+.entry-content ul.icon-blocks li a .heading {
+  display: block;
+  font-size: 120%;
+  margin-bottom: 5px;
+}
+.icon-blocks li a .text,
+.entry-content ul.icon-blocks li a .text {
+  font-size: 90%;
+}
+.icon-blocks li a:hover,
+.entry-content ul.icon-blocks li a:hover {
+  text-decoration: none;
+}
+.icon-blocks li:last-child,
+.entry-content ul.icon-blocks li:last-child {
+  border-right: 0;
+}
+.icon-blocks.count-1 li,
+.entry-content ul.icon-blocks.count-1 li {
+  float: none;
+}
+.icon-blocks.count-2 li,
+.entry-content ul.icon-blocks.count-2 li {
+  width: 50%;
+}
+.icon-blocks.count-3 li,
+.entry-content ul.icon-blocks.count-3 li {
+  width: 33.33%;
+}
+@media only screen and (max-width: 50em) {
+  .icon-blocks.count-3 li,
+  .entry-content ul.icon-blocks.count-3 li {
+    width: 100%;
+    float: none;
+  }
+}
+.icon-blocks.count-6 li,
+.entry-content ul.icon-blocks.count-6 li {
+  width: 33.33%;
+}
+@media only screen and (max-width: 50em) {
+  .icon-blocks.count-6 li,
+  .entry-content ul.icon-blocks.count-6 li {
+    width: 50%;
+  }
+}
+@media only screen and (max-width: 33.75em) {
+  .icon-blocks.count-6 li,
+  .entry-content ul.icon-blocks.count-6 li {
+    width: 100%;
+    float: none;
+  }
+}
+.icon-blocks.count-4 li, .icon-blocks.count-7 li, .icon-blocks.count-8 li,
+.entry-content ul.icon-blocks.count-4 li,
+.entry-content ul.icon-blocks.count-7 li,
+.entry-content ul.icon-blocks.count-8 li {
+  width: 25%;
+}
+@media only screen and (max-width: 50em) {
+  .icon-blocks.count-4 li, .icon-blocks.count-7 li, .icon-blocks.count-8 li,
+  .entry-content ul.icon-blocks.count-4 li,
+  .entry-content ul.icon-blocks.count-7 li,
+  .entry-content ul.icon-blocks.count-8 li {
+    width: 50%;
+  }
+}
+@media only screen and (max-width: 33.75em) {
+  .icon-blocks.count-4 li, .icon-blocks.count-7 li, .icon-blocks.count-8 li,
+  .entry-content ul.icon-blocks.count-4 li,
+  .entry-content ul.icon-blocks.count-7 li,
+  .entry-content ul.icon-blocks.count-8 li {
+    width: 100%;
+    float: none;
+  }
+}
+.icon-blocks.count-5 li, .icon-blocks.count-9 li, .icon-blocks.count-10 li,
+.entry-content ul.icon-blocks.count-5 li,
+.entry-content ul.icon-blocks.count-9 li,
+.entry-content ul.icon-blocks.count-10 li {
+  width: 20%;
+}
+@media only screen and (max-width: 50em) {
+  .icon-blocks.count-5 li, .icon-blocks.count-9 li, .icon-blocks.count-10 li,
+  .entry-content ul.icon-blocks.count-5 li,
+  .entry-content ul.icon-blocks.count-9 li,
+  .entry-content ul.icon-blocks.count-10 li {
+    width: 50%;
+  }
+}
+@media only screen and (max-width: 33.75em) {
+  .icon-blocks.count-5 li, .icon-blocks.count-9 li, .icon-blocks.count-10 li,
+  .entry-content ul.icon-blocks.count-5 li,
+  .entry-content ul.icon-blocks.count-9 li,
+  .entry-content ul.icon-blocks.count-10 li {
+    width: 100%;
+    float: none;
+  }
+}
+.icon-blocks li:hover,
+.entry-content ul.icon-blocks li:hover {
+  -webkit-transform: scale(1.05);
+      -ms-transform: scale(1.05);
+          transform: scale(1.05);
+  background-color: #FFF;
+}
+.icon-blocks:after,
+.entry-content ul.icon-blocks:after {
+  clear: both;
+  content: '';
+  display: table;
+}

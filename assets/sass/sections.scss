@@ -1,0 +1,88 @@
+@import "mixins";
+
+/**
+ * Sections
+ */
+
+.section {
+	clear:both;
+	padding-bottom:30px;
+	padding-top:30px;
+
+	@include responsive( 1200 ){
+		padding-left:5%;
+		padding-right:5%;
+	}
+
+	&.section-column {
+		clear:none;
+		padding-top:0;
+		padding-bottom:0;
+	}
+
+	&.light-gray {
+		background-color: #fafafa;
+	}
+	&.medium-gray {
+		background-color:#999;
+		color:#FFF;
+		h1, h2, h3, h4, h5, p, a {
+			color:#FFF;
+		}
+	}
+	&.dark-gray {
+		background-color:#333;
+		color:#FFF;
+		h1, h2, h3, h4, h5, p, a {
+			color:#FFF;
+		}
+	}
+	&.two-column {
+		& > .module, & > .section {
+			width:50%;
+			float:left;
+			clear:none;
+
+			@include responsive( 600 ){
+				width:100%;
+				float:none;
+			}
+		}
+
+		&:after {
+			@include clearfix();
+		}
+	}
+	&.three-column {
+		& > .module, & > .section {
+			width:33.33%;
+			float:left;
+			clear:none;
+		}
+
+		&:after {
+			@include clearfix();
+		}
+	}
+	&.four-column {
+		& > .module, & > .section {
+			width:25%;
+			float:left;
+			clear:none;
+		}
+
+		&:after {
+			@include clearfix();
+		}
+	}
+	&.two-column,
+	&.three-column,
+	&.four-column {
+		.module-inner {
+			padding:0 20px;
+			&:first-child {
+				padding-left:0;
+			}
+		}
+	}
+}
