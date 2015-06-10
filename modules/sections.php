@@ -390,24 +390,40 @@ class ACFMOD_Section {
 	}
 
 	public function get_class(){
+		if( $this->class )
+			$this->class = ' ' . trim( $this->class );
 		return $this->class;
+	}
+
+	function get_id(){
+		global $acfmod_current_section;
+		return $acfmod_current_section;
 	}
 
 	public function open(){
 		global $acfmod_sections, $acfmod_current_section;
 
-		$markup =  "\r\n" . '<div class="section' . $this->get_class();
-
+		$markup = '';
 		$section_open = false;
 
 		if( isset( $acfmod_sections[ $acfmod_current_section ] ) ){
 			$acfmod_sections[ $acfmod_current_section ]->current_col++;
 			$col_width = $acfmod_sections[ $acfmod_current_section ]->get_col_width();
 			$section_open = $acfmod_sections[ $acfmod_current_section ]->is_open();
-			$markup .= ' section-column" style="width:' . $col_width . '%;';
+
+			$id = $acfmod_sections[ $acfmod_current_section ]->get_id();
+
+			$this->class .= ' section-column';
+			$this->class .= ' section-' . $id;
+
+			$markup .= '<style type="text/css">';
+				$markup .= '.section.section-' . $id . ',.section.two-column>.section.section-' . $id . ',.section.three-column>.section.section-' . $id . ',.section.four-column>.section.section-' . $id . ' {';
+					$markup .= 'width: ' . $col_width . '%;';
+				$markup .= '}';
+			$markup .= '</style>';
 		}
 
-		$markup .= '">';
+		$markup .= "\r\n" . '<div class="section' . $this->get_class() . '">';
 
 		if( ! $section_open )
 			if( function_exists( 'genesis_structural_wrap' ) )

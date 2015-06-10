@@ -74,13 +74,16 @@ function acfmod_insert_modules( $content = '' ){
 	return $content;
 }
 
-global $acfmod_sections, $acfmod_current_section;
+global $acfmod_sections, $acfmod_current_section, $acfmod_module_count;
 
 function acfmod_module_loop( $context = NULL ){
-	global $acfmod_sections, $acfmod_current_section;
+	global $acfmod_sections, $acfmod_current_section, $acfmod_module_count;
 
 	if( ! is_array( $acfmod_sections ) )
 		$acfmod_sections = array();
+
+	if( ! $acfmod_module_count )
+		$acfmod_module_count = 0;
 
 	$content = '';
 	$style = '';
@@ -97,6 +100,7 @@ function acfmod_module_loop( $context = NULL ){
 	}
 
 	if( $module ){
+		$acfmod_module_count++;
 		$col_width = '';
 		$section_open = false;
 
@@ -106,13 +110,20 @@ function acfmod_module_loop( $context = NULL ){
 			$section_open = $acfmod_sections[ $acfmod_current_section ]->is_open();
 		}
 
-		if( $col_width ){
-			$style = ' style="width:' . $col_width . '%;' . $styles . '"';
-		} elseif( $styles ) {
-			$style = ' style="' . $styles . '"';
-		}
+		if( $col_width || $styles ):
+			$content .= '<style type="text/css">';
+				$content .= '.module.module-' . $acfmod_module_count . ',.section.two-column>.module.module-' . $acfmod_module_count . ',.section.three-column>.module.module-' . $acfmod_module_count . ',.section.four-column>.module.module-' . $acfmod_module_count . ' {';
+					if( $col_width ):
+						$content .= 'width: ' . $col_width . '%;';
+					endif;
+					if( $styles ):
+						$content .= $styles;
+					endif;
+				$content .= '}';
+			$content .= '</style>';
+		endif;
 
-		$content .= '<div class="module module-' . get_row_layout() . '"' . $style . '>';
+		$content .= '<div class="module module-' . get_row_layout() . ' module-' . $acfmod_module_count . '">';
 			if( ! $section_open )
 				if( function_exists( 'genesis_structural_wrap' ) )
 					$content .= genesis_structural_wrap( 'modular-content', 'open', false );
