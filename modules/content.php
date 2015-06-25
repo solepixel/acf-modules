@@ -134,7 +134,7 @@ function acfmod_simple_content_save_post( $post_id ) {
 	// array of field values
 	$fields = $_POST['acf'];
 
-	if( ! isset( $fields['acf_modules_field'] ) )
+	if( ! isset( $fields['acf_modules_field'] ) && is_array( $fields['acf_modules_field'] ) )
 		return;
 
 	// This may change in the future... yikes...

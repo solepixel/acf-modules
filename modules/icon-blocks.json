@@ -1,12 +1,12 @@
 [
   {
-    "key":"group_543c1c5fdde54",
+    "key":"groupconfig_543c1c5fdde54",
     "title":"Content Modules",
     "fields":[
       {
-        "key":"field_543d7bc015b3d",
+        "key":"fieldconfig_543d7bc015b3d",
         "label":"Modules",
-        "name":"_bdmod_modules",
+        "name":"_acfmod_config_modules",
         "type":"flexible_content",
         "instructions":"Create many different types of content by selecting the module and filling in the fields.",
         "required":0,
@@ -21,13 +21,13 @@
         "max":"",
         "layouts":[
           {
-            "key":"543eb572cb630",
+            "key":"config543eb572cb630",
             "name":"icon_blocks",
             "label":"Icon Blocks",
             "display":"row",
             "sub_fields":[
 			  {
-			    "key": "field_5469b74ef1d78",
+			    "key": "fieldconfig_5469b74ef1d78",
 			    "label": "CSS Class",
 			    "name": "css_class",
 			    "type": "text",
@@ -48,7 +48,7 @@
 			    "disabled": 0
 			  },
               {
-                "key":"field_543eb6b846edd",
+                "key":"fieldconfig_543eb6b846edd",
                 "label":"Icons",
                 "name":"icons",
                 "type":"repeater",
@@ -66,7 +66,7 @@
                 "button_label":"Add Icon Block",
                 "sub_fields":[
                   {
-                    "key":"field_543eb580cb631",
+                    "key":"fieldconfig_543eb580cb631",
                     "label":"Icon",
                     "name":"icon",
                     "type":"image",
@@ -90,7 +90,7 @@
                     "mime_types":""
                   },
                   {
-                    "key":"field_543eb590cb632",
+                    "key":"fieldconfig_543eb590cb632",
                     "label":"Heading",
                     "name":"heading",
                     "type":"text",
@@ -111,7 +111,7 @@
                     "disabled":0
                   },
                   {
-                    "key":"field_5460c8fde86b0",
+                    "key":"fieldconfig_5460c8fde86b0",
                     "label":"Heading Color",
                     "name":"heading_color",
                     "type":"color_picker",
@@ -126,7 +126,7 @@
                     "default_value":""
                   },
                   {
-                    "key":"field_543eb59dcb633",
+                    "key":"fieldconfig_543eb59dcb633",
                     "label":"Text Content",
                     "name":"text",
                     "type":"textarea",
@@ -147,7 +147,7 @@
                     "disabled":0
                   },
                   {
-                    "key":"field_543eb5bfcb634",
+                    "key":"fieldconfig_543eb5bfcb634",
                     "label":"Page Link",
                     "name":"page_link",
                     "type":"page_link",
@@ -169,7 +169,7 @@
                     "multiple":0
                   },
                   {
-                    "key":"field_543eb5d7cb635",
+                    "key":"fieldconfig_543eb5d7cb635",
                     "label":"Custom URL",
                     "name":"custom_url",
                     "type":"url",
@@ -185,7 +185,37 @@
                     "placeholder":""
                   },
                   {
-                    "key":"field_543eb5ebcb636",
+                    "key": "fieldconfig_558a23ed3389b",
+                    "label": "Link Target",
+                    "name": "link_target",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "_blank": "Blank (New Window)",
+                        "_top": "Top",
+                        "_parent": "Parent",
+                        "_self": "Self"
+                    },
+                    "default_value": {
+                        "": ""
+                    },
+                    "allow_null": 1,
+                    "multiple": 0,
+                    "ui": 0,
+                    "ajax": 0,
+                    "placeholder": "",
+                    "disabled": 0,
+                    "readonly": 0
+                  },
+                  {
+                    "key":"fieldconfig_543eb5ebcb636",
                     "label":"Call to Action Text",
                     "name":"cta_text",
                     "type":"text",

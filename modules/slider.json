@@ -6,7 +6,7 @@
       {
         "key":"field_543d7bc015b3d",
         "label":"Modules",
-        "name":"_bdmod_modules",
+        "name":"_acfmod_modules",
         "type":"flexible_content",
         "instructions":"Create many different types of content by selecting the module and filling in the fields.",
         "required":0,

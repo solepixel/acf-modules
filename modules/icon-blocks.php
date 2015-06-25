@@ -167,6 +167,36 @@ function acfmod_layout_icon_blocks( $layouts ){
 						'placeholder' => '',
 					),
 					array (
+						'key' => 'field_558a23ed3389b',
+						'label' => 'Link Target',
+						'name' => 'link_target',
+						'type' => 'select',
+						'instructions' => '',
+						'required' => 0,
+						'conditional_logic' => 0,
+						'wrapper' => array (
+							'width' => '',
+							'class' => '',
+							'id' => '',
+						),
+						'choices' => array (
+							'_blank' => 'Blank (New Window)',
+							'_top' => 'Top',
+							'_parent' => 'Parent',
+							'_self' => 'Self',
+						),
+						'default_value' => array (
+							'' => '',
+						),
+						'allow_null' => 1,
+						'multiple' => 0,
+						'ui' => 0,
+						'ajax' => 0,
+						'placeholder' => '',
+						'disabled' => 0,
+						'readonly' => 0,
+					),
+					array (
 						'key' => 'field_543eb5ebcb636',
 						'label' => 'Call to Action Text',
 						'name' => 'cta_text',
@@ -218,10 +248,16 @@ function acfmod_modules_icon_blocks(){
 			while( have_rows( 'icons' ) ): the_row();
 				$image = get_sub_field( 'icon' );
 				$link = acfmod_get_the_link();
+				$target = get_sub_field( 'link_target' );
+				// i don't know why, but for some reason it may return an array.
+				if( is_array( $target ) && count( $target ) > 0 )
+					$target = reset( $target );
+				$target = $target ? ' target="' . $target . '"' : '';
+
 				$output .= '<li>';
 
 					if( $link ):
-						$output .= '<a href="' . $link . '">';
+						$output .= '<a href="' . $link . '"' . $target . '>';
 					endif;
 
 					if( $image )
