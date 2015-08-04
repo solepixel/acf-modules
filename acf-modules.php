@@ -3,7 +3,7 @@
 Plugin Name: ACF Modules
 Plugin URI: http://www.briandichiara.com/
 Description: Customizable content modules for modular content.
-Version: 1.0.0
+Version: 1.0.2
 Author: Brian DiChiara
 Author URI: http://www.briandichiara.com/
 Text Domain: acfmod
@@ -130,12 +130,12 @@ function acfmod_module_loop( $context = NULL ){
 
 				$content .= '<div class="module-inner">';
 					$content .= $module;
-				$content .= '</div>';
+				$content .= '</div><!-- .module-inner -->';
 
 			if( ! $section_open )
 				if( function_exists( 'genesis_structural_wrap' ) )
 					$content .= genesis_structural_wrap( 'modular-content', 'close', false );
-		$content .= '</div>';
+		$content .= '</div><!-- .module -->';
 	}
 
 	if( get_row_layout() == 'section_closer' ){

@@ -322,13 +322,14 @@ function acfmod_open_section( $content = '' ){
 	// append the content
 	$content .= $section->open();
 
-	$acfmod_sections[] = $section;
-
 	// instantiate current section, or increase by one
 	if( ! $acfmod_current_section && $acfmod_current_section !== 0 )
 		$acfmod_current_section = 0;
 	else
 		$acfmod_current_section++;
+
+	// hard code the index to avoid potential issues.
+	$acfmod_sections[ $acfmod_current_section ] = $section;
 
 	return $content;
 }
@@ -336,7 +337,10 @@ function acfmod_open_section( $content = '' ){
 function acfmod_close_section( $content = '' ){
 	global $acfmod_sections, $acfmod_current_section;
 
-	if( count( $acfmod_sections ) && isset( $acfmod_sections[ $acfmod_current_section ] ) ){
+	if( ! count( $acfmod_sections ) )
+		return $content;
+
+	if( isset( $acfmod_sections[ $acfmod_current_section ] ) && $acfmod_sections[ $acfmod_current_section ]->is_open() ){
 		$content .= $acfmod_sections[ $acfmod_current_section ]->close();
 		unset( $acfmod_sections[ $acfmod_current_section ] );
 		$acfmod_current_section--;
