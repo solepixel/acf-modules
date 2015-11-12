@@ -3,7 +3,7 @@
 Plugin Name: ACF Modules
 Plugin URI: http://www.briandichiara.com/
 Description: Customizable content modules for modular content.
-Version: 1.0.2
+Version: 1.0.3
 Author: Brian DiChiara
 Author URI: http://www.briandichiara.com/
 Text Domain: acfmod
@@ -31,7 +31,7 @@ function acfmod_modules_[module](){
 
 */
 
-define( 'ACFMOD_VERSION', '1.0.0' );
+define( 'ACFMOD_VERSION', '1.0.3' );
 define( 'ACFMOD_PATH', plugin_dir_path( __FILE__ ) );
 define( 'ACFMOD_URI', plugin_dir_url( __FILE__ ) );
 
