@@ -1,15 +1,26 @@
 <?php
+/**
+ * Call to Action ACF Module
+ *
+ * @package acf-modules
+ */
 
 add_filter( 'acfmod/layouts', 'acfmod_layout_call_to_action', 65 );
 
-function acfmod_layout_call_to_action( $layouts ){
-	$layouts[] = array (
+/**
+ * Call to Action Layout
+ *
+ * @param array $layouts  CTA Layout Field Array.
+ * @return array          Layouts, now with CTA
+ */
+function acfmod_layout_call_to_action( $layouts ) {
+	$layouts[] = array(
 		'key' => '5449d44b4e176',
 		'name' => 'call_to_action',
 		'label' => 'Call to Action',
 		'display' => 'row',
-		'sub_fields' => array (
-			array (
+		'sub_fields' => array(
+			array(
 				'key' => 'field_544ea6d6b0b93',
 				'label' => 'Alignment',
 				'name' => 'alignment',
@@ -17,12 +28,12 @@ function acfmod_layout_call_to_action( $layouts ){
 				'instructions' => '',
 				'required' => 0,
 				'conditional_logic' => 0,
-				'wrapper' => array (
+				'wrapper' => array(
 					'width' => '',
 					'class' => '',
 					'id' => '',
 				),
-				'choices' => array (
+				'choices' => array(
 					'left' => 'Left',
 					'center' => 'Center (default)',
 					'right' => 'Right',
@@ -32,7 +43,7 @@ function acfmod_layout_call_to_action( $layouts ){
 				'default_value' => 'center',
 				'layout' => 'horizontal',
 			),
-			array (
+			array(
 				'key' => 'field_5449d46b4e177',
 				'label' => 'Heading',
 				'name' => 'heading',
@@ -40,7 +51,7 @@ function acfmod_layout_call_to_action( $layouts ){
 				'instructions' => '',
 				'required' => 0,
 				'conditional_logic' => 0,
-				'wrapper' => array (
+				'wrapper' => array(
 					'width' => '',
 					'class' => '',
 					'id' => '',
@@ -53,7 +64,7 @@ function acfmod_layout_call_to_action( $layouts ){
 				'readonly' => 0,
 				'disabled' => 0,
 			),
-			array (
+			array(
 				'key' => 'field_5449d48a4e178',
 				'label' => 'Text',
 				'name' => 'text',
@@ -61,7 +72,7 @@ function acfmod_layout_call_to_action( $layouts ){
 				'instructions' => '',
 				'required' => 0,
 				'conditional_logic' => 0,
-				'wrapper' => array (
+				'wrapper' => array(
 					'width' => '',
 					'class' => '',
 					'id' => '',
@@ -71,7 +82,7 @@ function acfmod_layout_call_to_action( $layouts ){
 				'toolbar' => 'basic',
 				'media_upload' => 1,
 			),
-			array (
+			array(
 				'key' => 'field_5449d4ad4e179',
 				'label' => 'Button Text',
 				'name' => 'button_text',
@@ -79,7 +90,7 @@ function acfmod_layout_call_to_action( $layouts ){
 				'instructions' => '',
 				'required' => 0,
 				'conditional_logic' => 0,
-				'wrapper' => array (
+				'wrapper' => array(
 					'width' => '',
 					'class' => '',
 					'id' => '',
@@ -92,7 +103,7 @@ function acfmod_layout_call_to_action( $layouts ){
 				'readonly' => 0,
 				'disabled' => 0,
 			),
-			array (
+			array(
 				'key' => 'field_5449d4bc4e17a',
 				'label' => 'CTA URL',
 				'name' => 'cta_url',
@@ -100,7 +111,7 @@ function acfmod_layout_call_to_action( $layouts ){
 				'instructions' => '',
 				'required' => 0,
 				'conditional_logic' => 0,
-				'wrapper' => array (
+				'wrapper' => array(
 					'width' => '',
 					'class' => '',
 					'id' => '',
@@ -108,22 +119,22 @@ function acfmod_layout_call_to_action( $layouts ){
 				'default_value' => '',
 				'placeholder' => '',
 			),
-			array (
+			array(
 				'key' => 'field_5449d4d24e17b',
 				'label' => 'Background Color',
 				'name' => 'background_color',
 				'type' => 'color_picker',
-				'instructions' => 'Suggested Hex codes are: #3BB6E1 (blue), #BBD152 (green), and #EC7326 (orange)',
+				'instructions' => '',
 				'required' => 0,
 				'conditional_logic' => 0,
-				'wrapper' => array (
+				'wrapper' => array(
 					'width' => '',
 					'class' => '',
 					'id' => '',
 				),
 				'default_value' => '',
 			),
-			array (
+			array(
 				'key' => 'field_5449d4f14e17c',
 				'label' => 'Text Color',
 				'name' => 'text_color',
@@ -131,14 +142,14 @@ function acfmod_layout_call_to_action( $layouts ){
 				'instructions' => '',
 				'required' => 0,
 				'conditional_logic' => 0,
-				'wrapper' => array (
+				'wrapper' => array(
 					'width' => '',
 					'class' => '',
 					'id' => '',
 				),
 				'default_value' => '#333333',
 			),
-			array (
+			array(
 				'key' => 'field_5449d5054e17d',
 				'label' => 'Button Color',
 				'name' => 'button_color',
@@ -146,14 +157,14 @@ function acfmod_layout_call_to_action( $layouts ){
 				'instructions' => '',
 				'required' => 0,
 				'conditional_logic' => 0,
-				'wrapper' => array (
+				'wrapper' => array(
 					'width' => '',
 					'class' => '',
 					'id' => '',
 				),
 				'default_value' => '#3BB6E1',
 			),
-			array (
+			array(
 				'key' => 'field_5459b5ecee4aa',
 				'label' => 'Module Styles',
 				'name' => 'module_styles',
@@ -161,7 +172,7 @@ function acfmod_layout_call_to_action( $layouts ){
 				'instructions' => 'Apply CSS directly to the module container element. Use to tweak positioning/layouts to perfection.',
 				'required' => 0,
 				'conditional_logic' => 0,
-				'wrapper' => array (
+				'wrapper' => array(
 					'width' => '',
 					'class' => '',
 					'id' => '',
@@ -187,9 +198,16 @@ $cta_modules = 0;
 
 add_filter( 'acfmod/modules/call_to_action', 'acfmod_modules_call_to_action' );
 
-function acfmod_modules_call_to_action(){
+/**
+ * Call to Action Module
+ *
+ * @return html  Module Output
+ */
+function acfmod_modules_call_to_action() {
 	global $cta_modules;
+
 	$cta_modules++;
+
 	$heading = trim( get_sub_field( 'heading' ) );
 	$text = trim( get_sub_field( 'text' ) );
 	$button = trim( get_sub_field( 'button_text' ) );
@@ -200,34 +218,46 @@ function acfmod_modules_call_to_action(){
 	$foreground = get_sub_field( 'text_color' );
 	$button_color = get_sub_field( 'button_color' );
 
-	$output = '<style>.cta-' . $cta_modules . ' {';
+	$output = '<style>.cta-' . esc_html( $cta_modules ) . ' {';
 
-		if( $background )
-			$output .= 'background-color: ' . $background . ';';
-		if( $foreground )
-			$output .= 'color: ' . $foreground . ';';
-		if( $alignment )
-			$output .= 'text-align: ' . $alignment . ';';
+	if ( $background ) {
+		$output .= 'background-color: ' . esc_html( $background ) . ';';
+	}
+	if ( $foreground ) {
+		$output .= 'color: ' . esc_html( $foreground ) . ';';
+	}
+	if ( $alignment ) {
+		$output .= 'text-align: ' . esc_html( $alignment ) . ';';
+	}
 
-	$output .= '} .cta-' . $cta_modules . ' .cta-heading, .cta-' . $cta_modules . ' .cta-text {';
-		if( $foreground )
-			$output .= 'color:' . $foreground . ';';
-	$output .= '} .cta-' . $cta_modules . ' .cta {';
-		if( $button_color ){
-			$output .= 'border-color:' . $button_color . ';';
-			$output .= 'color:' . $button_color . ';';
-		}
+	$output .= '} .cta-' . esc_html( $cta_modules ) . ' .cta-heading, .cta-' . esc_html( $cta_modules ) . ' .cta-text {';
+
+	if ( $foreground ) {
+		$output .= 'color:' . esc_html( $foreground ) . ';';
+	}
+
+	$output .= '} .cta-' . esc_html( $cta_modules ) . ' .cta {';
+
+	if ( $button_color ) {
+		$output .= 'border-color:' . esc_html( $button_color ) . ';';
+		$output .= 'color:' . esc_html( $button_color ) . ';';
+	}
+
 	$output .= '}</style>';
 
-	$output .= '<div class="call-to-action cta-' . $cta_modules . '">';
-		if( $heading )
-			$output .= '<h3 class="cta-heading">' . $heading . '</h3>';
-		if( $text )
-			$output .= '<div class="cta-text">' . $text . '</div>';
-		if( $button && $url )
-			$output .= '<a class="cta" href="' . esc_attr( $url ) . '">' . $button . '</a>';
-	$output .= '</div>';
+	$output .= '<div class="call-to-action cta-' . esc_attr( $cta_modules ) . '">';
 
+	if ( $heading ) {
+		$output .= '<h3 class="cta-heading">' . $heading . '</h3>';
+	}
+	if ( $text ) {
+		$output .= '<div class="cta-text">' . $text . '</div>';
+	}
+	if ( $button && $url ) {
+		$output .= '<a class="cta" href="' . esc_attr( $url ) . '">' . $button . '</a>';
+	}
+
+	$output .= '</div>';
 
 	return $output;
 }
