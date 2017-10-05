@@ -1,7 +1,18 @@
 <?php
+/**
+ * Iframe ACF Module
+ *
+ * @package acf-modules
+ */
 
 add_filter( 'acfmod/layouts', 'acfmod_layout_iframe', 42 );
 
+/**
+ * Iframe Layout
+ *
+ * @param array $layouts  Layouts Field Array.
+ * @return array          Layouts, now with iFrame
+ */
 function acfmod_layout_iframe( $layouts ) {
 
 	$layouts[] = array(
@@ -106,16 +117,25 @@ function acfmod_layout_iframe( $layouts ) {
 
 add_filter( 'acfmod/modules/iframe', 'acfmod_modules_iframe' );
 
+/**
+ * Iframe Module
+ *
+ * @return html  Module Output
+ */
 function acfmod_modules_iframe() {
 	$url = trim( get_sub_field( 'url' ) );
 	$css_class = trim( get_sub_field( 'css_class' ) );
 	$height = trim( get_sub_field( 'height' ) );
 
-	$output = '<iframe class="acfmod-iframe ' . $css_class . '"';
-		$output .= ' src="' . esc_attr( $url ) . '" ';
-		if ( $height )
-			$output .= 'height="' . $height . '" ';
-		$output .= apply_filters( 'acfmod/iframe/attributes', 'allowtransparency="true" frameborder="0" scrolling="no" allowfullscreen="allowfullscreen" mozallowfullscreen="mozallowfullscreen" webkitallowfullscreen="webkitallowfullscreen" oallowfullscreen="oallowfullscreen" msallowfullscreen="msallowfullscreen"' );
+	$output = '<iframe class="acfmod-iframe ' . esc_attr( $css_class ) . '"';
+	$output .= ' src="' . esc_attr( $url ) . '" ';
+
+	if ( ! empty( $height ) ) {
+		$output .= 'height="' . esc_attr( $height ) . '" ';
+	}
+
+	$output .= apply_filters( 'acfmod/iframe/attributes', 'allowtransparency="true" frameborder="0" scrolling="no" allowfullscreen="allowfullscreen" mozallowfullscreen="mozallowfullscreen" webkitallowfullscreen="webkitallowfullscreen" oallowfullscreen="oallowfullscreen" msallowfullscreen="msallowfullscreen"' );
+
 	$output .= '></iframe>';
 
 	return $output;

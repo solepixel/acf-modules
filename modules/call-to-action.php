@@ -10,7 +10,7 @@ add_filter( 'acfmod/layouts', 'acfmod_layout_call_to_action', 65 );
 /**
  * Call to Action Layout
  *
- * @param array $layouts  CTA Layout Field Array.
+ * @param array $layouts  Layouts Field Array.
  * @return array          Layouts, now with CTA
  */
 function acfmod_layout_call_to_action( $layouts ) {

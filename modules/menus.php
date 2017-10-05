@@ -1,10 +1,22 @@
 <?php
+/**
+ * Menus ACF Module
+ *
+ * @package acf-modules
+ */
 
 add_filter( 'acfmod/layouts', 'acfmod_layout_menus', 70 );
 
+/**
+ * Menus Layout
+ *
+ * @param array $layouts  Layouts Field Array.
+ * @return array          Layouts, now with Menus
+ */
 function acfmod_layout_menus( $layouts ) {
-	if ( ! class_exists( 'ACF_Nav_Menu_Field_Plugin' ) )
+	if ( ! class_exists( 'ACF_Nav_Menu_Field_Plugin' ) ) {
 		return $layouts;
+	}
 
 	$layouts[] = array(
 		'key' => '544f16844fb3a',
@@ -96,39 +108,46 @@ function acfmod_layout_menus( $layouts ) {
 
 add_filter( 'acfmod/modules/menus', 'acfmod_modules_menus' );
 
+/**
+ * Menus Module
+ *
+ * @return html  Module Output
+ */
 function acfmod_modules_menus() {
 	$output = '';
 
 	$count = count( get_sub_field( 'custom_menus' ) );
 
-	if ( have_rows( 'custom_menus' ) ):
+	if ( have_rows( 'custom_menus' ) ) {
 
-		$output .= '<div class="custom-menus count-' . $count . '">';
+		$output .= '<div class="custom-menus count-' . esc_attr( $count ) . '">';
 
-			while( have_rows( 'custom_menus' ) ): the_row();
-				$menu = get_sub_field( 'menu' );
-				$display_title = get_sub_field( 'display_title' );
-				$nav = wp_get_nav_menu_object( $menu );
+		while ( have_rows( 'custom_menus' ) ) :
+			the_row();
 
-				$output .= '<div class="menu-wrapper menu-' . $nav->slug . '">';
+			$menu = get_sub_field( 'menu' );
+			$display_title = get_sub_field( 'display_title' );
+			$nav = wp_get_nav_menu_object( $menu );
 
-					if ( $display_title ):
-						$output .= '<h3 class="menu-title">' . $nav->name . '</h3>';
-					endif;
+			$output .= '<div class="menu-wrapper menu-' . esc_attr( $nav->slug ) . '">';
 
-					$output .= wp_nav_menu( array(
-						'echo' => false,
-						'menu' => $menu,
-						'menu_class' => 'menu'
-					));
+			if ( ! empty( $display_title ) ) {
+				$output .= '<h3 class="menu-title">' . $nav->name . '</h3>';
+			}
 
-				$output .= '</div>';
+			$output .= wp_nav_menu( array(
+				'echo' => false,
+				'menu' => $menu,
+				'menu_class' => 'menu',
+			));
 
-			endwhile;
+			$output .= '</div>';
+
+		endwhile;
 
 		$output .= '</div>';
 
-	endif;
+	}
 
 	return $output;
 }

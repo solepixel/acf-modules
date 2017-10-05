@@ -10,7 +10,7 @@ add_filter( 'acfmod/layouts', 'acfmod_layout_simple_content', 30 );
 /**
  * Simple Content Layout
  *
- * @param array $layouts  Content Layout Field Array.
+ * @param array $layouts  Layouts Field Array.
  * @return array          Layouts, now with Simple Content
  */
 function acfmod_layout_simple_content( $layouts ) {

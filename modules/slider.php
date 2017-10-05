@@ -1,7 +1,20 @@
 <?php
+/**
+ * Slider ACF Module
+ *
+ * @package acf-modules
+ */
 
 add_filter( 'acfmod/layouts', 'acfmod_layout_slider', 45 );
 
+/**
+ * Slider Layout
+ *
+ * Support Solilquy by default.
+ *
+ * @param array $layouts  Layouts Field Array.
+ * @return array          Layouts, now with Sliders
+ */
 function acfmod_layout_slider( $layouts ) {
 	$layouts[] = array(
 		'key' => '543eb615cb637',
@@ -25,8 +38,7 @@ function acfmod_layout_slider( $layouts ) {
 				'post_type' => array(
 					0 => apply_filters( 'acsfmod/slider/post_type', 'soliloquy' ),
 				),
-				'taxonomy' => array(
-				),
+				'taxonomy' => array(),
 				'allow_null' => 0,
 				'multiple' => 0,
 				'return_format' => 'object',
@@ -63,6 +75,11 @@ function acfmod_layout_slider( $layouts ) {
 
 add_filter( 'acfmod/modules/slider', 'acfmod_modules_slider' );
 
+/**
+ * Slider Module
+ *
+ * @return html  Module Output
+ */
 function acfmod_modules_slider() {
 	$slider = get_sub_field( 'slider' );
 	$output = do_shortcode( '[slider id="' . $slider->ID . '"]' );

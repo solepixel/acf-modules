@@ -1,7 +1,18 @@
 <?php
+/**
+ * Site-Search ACF Module
+ *
+ * @package acf-modules
+ */
 
 add_filter( 'acfmod/layouts', 'acfmod_layout_site_search', 85 );
 
+/**
+ * Site Search Layout
+ *
+ * @param array $layouts  Layouts Field Array.
+ * @return array          Layouts, now with Site Search
+ */
 function acfmod_layout_site_search( $layouts ) {
 	$layouts[] = array(
 		'key' => '54bc8ce7073a1',
@@ -104,14 +115,19 @@ function acfmod_layout_site_search( $layouts ) {
 
 add_filter( 'acfmod/modules/site_search', 'acfmod_modules_site_search' );
 
+/**
+ * Site Search Module
+ *
+ * @return html  Module Output
+ */
 function acfmod_modules_site_search() {
 	$label = get_sub_field( 'search_label' );
 	$action = get_sub_field( 'search_url' ) ? get_sub_field( 'search_url' ) : '/';
 	$method = get_sub_field( 'method' ) ? get_sub_field( 'method' ) : 'get';
 	$input_name = get_sub_field( 'input_name' ) ? get_sub_field( 'input_name' ) : 's';
 
-	$output = '<form action="' . $action . '" method="' . $method . '" class="super-search">';
-		$output .= '<label><span class="placeholder">' . $label . '</span><input type="search" name="' . $input_name . '" /></label>';
+	$output = '<form action="' . esc_attr( $action ) . '" method="' . esc_attr( $method ) . '" class="super-search">';
+		$output .= '<label><span class="placeholder">' . esc_html( $label ) . '</span><input type="search" name="' . esc_attr( $input_name ) . '" /></label>';
 		$output .= '<input type="submit" value="Search" />';
 	$output .= '</form>';
 

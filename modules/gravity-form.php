@@ -1,10 +1,22 @@
 <?php
+/**
+ * Gravity Form ACF Module
+ *
+ * @package acf-modules
+ */
 
 add_filter( 'acfmod/layouts', 'acfmod_layout_gravity_form', 75 );
 
+/**
+ * Gravity Forms Layout
+ *
+ * @param array $layouts  Layouts Field Array.
+ * @return array          Layouts, now with Gravity Form
+ */
 function acfmod_layout_gravity_form( $layouts ) {
-	if ( ! class_exists( 'GFForms' ) )
+	if ( ! class_exists( 'GFForms' ) ) {
 		return $layouts;
+	}
 
 	$layouts[] = array(
 		'key' => '54665a37a7c21',
@@ -110,11 +122,17 @@ function acfmod_layout_gravity_form( $layouts ) {
 
 add_filter( 'acfmod/modules/gravity_form', 'acfmod_modules_gravity_form' );
 
+/**
+ * Gravity Form Module
+ *
+ * @return html  Module Output
+ */
 function acfmod_modules_gravity_form() {
 	$output = '';
 
-	if ( ! function_exists( 'gravity_form' ) )
+	if ( ! function_exists( 'gravity_form' ) ) {
 		return $output;
+	}
 
 	$form = get_sub_field( 'form' );
 	$title = get_sub_field( 'title' );
@@ -122,11 +140,13 @@ function acfmod_modules_gravity_form() {
 	$ajax = get_sub_field( 'ajax' );
 	$tabindex = get_sub_field( 'tabindex' );
 
-	if ( ! $tabindex )
+	if ( empty( $tabindex ) ) {
 		$tabindex = 20;
+	}
 
-	if ( $form )
+	if ( ! empty( $form ) ) {
 		$output = gravity_form( $form->id, $title, $description, false, array(), $ajax, $tabindex, false );
+	}
 
 	return $output;
 }

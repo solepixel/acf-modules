@@ -1,7 +1,18 @@
 <?php
+/**
+ * Image ACF Module
+ *
+ * @package acf-modules
+ */
 
 add_filter( 'acfmod/layouts', 'acfmod_layout_image', 50 );
 
+/**
+ * Image Layout
+ *
+ * @param array $layouts  Layouts Field Array.
+ * @return array          Layouts, now with Image
+ */
 function acfmod_layout_image( $layouts ) {
 	$layouts[] = array(
 		'key' => '543eb643cb639',
@@ -107,8 +118,7 @@ function acfmod_layout_image( $layouts ) {
 					'left' => 'Left',
 					'right' => 'Right',
 				),
-				'default_value' => array(
-				),
+				'default_value' => array(),
 				'allow_null' => 0,
 				'multiple' => 0,
 				'ui' => 0,
@@ -154,8 +164,7 @@ function acfmod_layout_image( $layouts ) {
 				'post_type' => array(
 					0 => 'page',
 				),
-				'taxonomy' => array(
-				),
+				'taxonomy' => array(),
 				'allow_null' => 1,
 				'multiple' => 0,
 			),
@@ -206,44 +215,55 @@ function acfmod_layout_image( $layouts ) {
 
 add_filter( 'acfmod/modules/image', 'acfmod_modules_image' );
 
+/**
+ * Image Module
+ *
+ * @return html  Module Output
+ */
 function acfmod_modules_image() {
 	$source = get_sub_field( 'source' );
 	$alignment = get_sub_field( 'alignment' );
 	$max_width = get_sub_field( 'max_width' );
 	$thumb_size = get_sub_field( 'thumb_size' );
-	$link = bdmod_get_the_link();
+	$link = acfmod_get_the_link();
 	$caption = get_sub_field( 'caption' );
 
-	$src = $thumb_size && $thumb_size != '__full__' && isset( $source['sizes'][ $thumb_size ] ) ? $source['sizes'][ $thumb_size ] : $source['url'];
+	$src = $thumb_size && '__full__' !== $thumb_size && isset( $source['sizes'][ $thumb_size ] ) ? $source['sizes'][ $thumb_size ] : $source['url'];
 
 	$output = '';
 
-	if ( $link ):
-		$output .= '<a href="' . $link . '" class="image-wrap">';
-	else:
+	if ( $link ) {
+		$output .= '<a href="' . esc_attr( $link ) . '" class="image-wrap">';
+	} else {
 		$output .= '<span class="image-wrap">';
-	endif;
+	}
 
-	$style = $max_width ? ' style="max-width:' . $max_width . '%;"' : '';
+	$style = $max_width ? ' style="max-width:' . esc_attr( $max_width ) . '%;"' : '';
 
-	$output .= '<img src="' . $src . '" class="align' . $alignment . '"' . $style . ' />';
+	$output .= '<img src="' . esc_attr( $src ) . '" class="align' . esc_attr( $alignment ) . '"' . $style . ' />';
 
-	if ( $caption ):
+	if ( $caption ) {
 		$output .= '<span class="image-caption">' . $caption . '</span>';
-	endif;
+	}
 
-	if ( $link ):
+	if ( $link ) {
 		$output .= '</a>';
-	else:
+	} else {
 		$output .= '</span>';
-	endif;
+	}
 
 	return $output;
 }
 
-add_filter('acf/load_field/name=thumb_size', 'bdmod_image_sizes_choices' );
+add_filter( 'acf/load_field/name=thumb_size', 'acfmod_image_sizes_choices' );
 
-function bdmod_image_sizes_choices( $field ) {
+/**
+ * Image Size Choices
+ *
+ * @param array $field  ACF Field Array.
+ * @return array        Modified Field Array
+ */
+function acfmod_image_sizes_choices( $field ) {
 
 	$thumb_w = get_option( 'thumbnail_size_w' );
 	$thumb_h = get_option( 'thumbnail_size_h' );
@@ -254,24 +274,20 @@ function bdmod_image_sizes_choices( $field ) {
 	$lg_w = get_option( 'large_size_w' );
 	$lg_h = get_option( 'large_size_h' );
 
-    $field['choices'] = array(
-    	'__full__' => __( 'Full Size', 'bdmod' ),
-    	'thumbnail' => __( 'Thumbnail', 'bdmod' ) . ' (' . $thumb_w . 'x' . $thumb_h . ')',
-    	'medium' => __( 'Medium', 'bdmod' ) . ' (' . $med_w . 'x' . $med_h . ')',
-    	'large' => __( 'Large', 'bdmod' ) . ' (' . $lg_w . 'x' . $lg_h . ')'
-    );
+	$field['choices'] = array(
+		'__full__' => __( 'Full Size', 'acfmod' ),
+		'thumbnail' => __( 'Thumbnail', 'acfmod' ) . ' (' . esc_html( $thumb_w ) . 'x' . esc_html( $thumb_h ) . ')',
+		'medium' => __( 'Medium', 'acfmod' ) . ' (' . esc_html( $med_w ) . 'x' . esc_html( $med_h ) . ')',
+		'large' => __( 'Large', 'acfmod' ) . ' (' . esc_html( $lg_w ) . 'x' . esc_html( $lg_h ) . ')',
+	);
 
-    global $_wp_additional_image_sizes;
+	global $_wp_additional_image_sizes;
 
-    if ( is_array( $_wp_additional_image_sizes ) ) {
+	if ( is_array( $_wp_additional_image_sizes ) ) {
+		foreach ( $_wp_additional_image_sizes as $name => $size ) {
+			$field['choices'][ $name ] = $name . ' (' . $size['width'] . 'x' . $size['height'] . ')';
+		}
+	}
 
-        foreach( $_wp_additional_image_sizes as $name => $size ) {
-
-            $field['choices'][ $name ] = $name . ' (' . $size['width'] . 'x' . $size['height'] . ')';
-
-        }
-
-    }
-
-    return $field;
+	return $field;
 }

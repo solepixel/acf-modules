@@ -1,10 +1,22 @@
 <?php
+/**
+ * Nav Menu ACF Module
+ *
+ * @package acf-modules
+ */
 
 add_filter( 'acfmod/layouts', 'acfmod_layout_nav_menu', 69 );
 
+/**
+ * Nav Menu Layout
+ *
+ * @param array $layouts  Layouts Field Array.
+ * @return array          Layouts, now with Nav Menu
+ */
 function acfmod_layout_nav_menu( $layouts ) {
-	if ( ! class_exists( 'ACF_Nav_Menu_Field_Plugin' ) )
+	if ( ! class_exists( 'ACF_Nav_Menu_Field_Plugin' ) ) {
 		return $layouts;
+	}
 
 	$layouts[] = array(
 		'key' => '546f12849fd3a',
@@ -60,24 +72,29 @@ function acfmod_layout_nav_menu( $layouts ) {
 
 add_filter( 'acfmod/modules/nav_menu', 'acfmod_modules_nav_menu' );
 
+/**
+ * Nav Menu Module
+ *
+ * @return html  Module Output
+ */
 function acfmod_modules_nav_menu() {
 	$output = '';
 
 	$menu = get_sub_field( 'menu' );
 
-	if ( $menu ):
+	if ( $menu ) {
 
-		$output .= '<div class="menu-wrapper menu-' . $menu->slug . '">';
+		$output .= '<div class="menu-wrapper menu-' . esc_attr( $menu->slug ) . '">';
 
 			$output .= wp_nav_menu( array(
 				'echo' => false,
 				'menu' => $menu->ID,
-				'menu_class' => 'menu'
+				'menu_class' => 'menu',
 			));
 
 		$output .= '</div>';
 
-	endif;
+	}
 
 	return $output;
 }

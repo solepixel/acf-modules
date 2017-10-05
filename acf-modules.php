@@ -35,6 +35,9 @@ define( 'ACFMOD_VERSION', '1.1.0' );
 define( 'ACFMOD_PATH', plugin_dir_path( __FILE__ ) );
 define( 'ACFMOD_URI', plugin_dir_url( __FILE__ ) );
 
+/* Load Section Module Class */
+include_once( ACFMOD_PATH . 'includes/class-acfmod-section.php' );
+
 /* Load up any helper functions */
 include_once( ACFMOD_PATH . 'includes/helpers.php' );
 

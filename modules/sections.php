@@ -1,9 +1,19 @@
 <?php
+/**
+ * Section ACF Modules
+ *
+ * @package acf-modules
+ */
 
-// Add section opener and closer
-
+// Add section opener and closer.
 add_filter( 'acfmod/layouts', 'acfmod_layout_section_opener', 200 );
 
+/**
+ * Section Opener Layout
+ *
+ * @param array $layouts  Layouts Field Array.
+ * @return array          Layouts, now with Section Openers
+ */
 function acfmod_layout_section_opener( $layouts ) {
 	$layouts[] = array(
 		'key' => '5442a3ba54f67',
@@ -32,8 +42,7 @@ function acfmod_layout_section_opener( $layouts ) {
 					'three-column' => 'Three Column',
 					'four-column' => 'Four Column',
 				),
-				'default_value' => array(
-				),
+				'default_value' => array(),
 				'allow_null' => 1,
 				'multiple' => 1,
 				'ui' => 1,
@@ -254,6 +263,12 @@ function acfmod_layout_section_opener( $layouts ) {
 
 add_filter( 'acfmod/layouts', 'acfmod_layout_section_closer', 201 );
 
+/**
+ * Section Closer Layout
+ *
+ * @param array $layouts  Layouts Field Array.
+ * @return array          Layouts, now with Section Closers
+ */
 function acfmod_layout_section_closer( $layouts ) {
 	$layouts[] = array(
 		'key' => '5442a42254f69',
@@ -288,11 +303,19 @@ function acfmod_layout_section_closer( $layouts ) {
 
 add_action( 'wp_enqueue_scripts', 'acfmod_register_section_enqueues' );
 
+/**
+ * Scripts/Styles needed for sections
+ */
 function acfmod_register_section_enqueues() {
 	wp_register_style( 'acfmod-sections', ACFMOD_URI . 'assets/css/sections.min.css' );
 }
 
-
+/**
+ * Open a Section
+ *
+ * @param string $content  Module Content.
+ * @return string          Modified HTML
+ */
 function acfmod_open_section( $content = '' ) {
 
 	wp_enqueue_style( 'acfmod-sections' );
@@ -301,32 +324,38 @@ function acfmod_open_section( $content = '' ) {
 
 	$class = get_sub_field( 'section_class' );
 
-	if ( ! is_array( $class ) )
+	if ( ! is_array( $class ) ) {
 		$class = $class ? array( $class ) : array();
+	}
 
-	if ( $custom_class = get_sub_field( 'custom_class' ) )
+	$custom_class = get_sub_field( 'custom_class' );
+
+	if ( ! empty( $custom_class ) ) {
 		$class[] = $custom_class;
+	}
 
-	if ( count( $class ) )
+	if ( count( $class ) ) {
 		$class = ' ' . implode( ' ', $class );
-	else
+	} else {
 		$class = '';
+	}
 
 	$section = new ACFMOD_Section();
 	$section->set_class( $class );
 
-	for( $i = 1; $i <= 4; $i++ ) {
+	for ( $i = 1; $i <= 4; $i++ ) {
 		$section->set_col_width( $i, get_sub_field( 'col_' . $i ) );
 	}
 
-	// append the content
+	// append the content.
 	$content .= $section->open();
 
-	// instantiate current section, or increase by one
-	if ( ! $acfmod_current_section && $acfmod_current_section !== 0 )
+	// instantiate current section, or increase by one.
+	if ( empty( $acfmod_current_section ) && 0 !== $acfmod_current_section ) {
 		$acfmod_current_section = 0;
-	else
+	} else {
 		$acfmod_current_section++;
+	}
 
 	// hard code the index to avoid potential issues.
 	$acfmod_sections[ $acfmod_current_section ] = $section;
@@ -334,11 +363,18 @@ function acfmod_open_section( $content = '' ) {
 	return $content;
 }
 
+/**
+ * Close section
+ *
+ * @param string $content  Module Content.
+ * @return string          Modified HTML
+ */
 function acfmod_close_section( $content = '' ) {
 	global $acfmod_sections, $acfmod_current_section;
 
-	if ( ! count( $acfmod_sections ) )
+	if ( ! count( $acfmod_sections ) ) {
 		return $content;
+	}
 
 	if ( isset( $acfmod_sections[ $acfmod_current_section ] ) && $acfmod_sections[ $acfmod_current_section ]->is_open() ) {
 		$content .= $acfmod_sections[ $acfmod_current_section ]->close();
@@ -349,111 +385,21 @@ function acfmod_close_section( $content = '' ) {
 	return $content;
 }
 
+/**
+ * Close leftover open sections
+ *
+ * @param string $content  Module Content.
+ * @return string          Modified HTML
+ */
 function acfmod_close_sections( $content = '' ) {
 	global $acfmod_sections;
 
-	# close any sections still open
-	if ( count( $acfmod_sections ) ):
-		foreach( $acfmod_sections as $key => $section ):
+	// close any sections still open.
+	if ( count( $acfmod_sections ) ) {
+		foreach ( $acfmod_sections as $key => $section ) {
 			$content .= acfmod_close_section();
-		endforeach;
-	endif;
+		}
+	}
 
 	return $content;
-}
-
-class ACFMOD_Section {
-
-	var $open = true;
-
-	var $class = '';
-
-	var $current_col = 0;
-
-	public function is_open() {
-		return $this->open;
-	}
-
-	public function get_col_width( $col = NULL ) {
-		if ( $col === NULL )
-			$col = $this->current_col;
-
-		if ( isset( $this->{'col' . $col . 'width'} ) ) {
-			return $this->{'col' . $col . 'width'};
-		}
-
-		return false;
-	}
-
-	public function set_col_width( $col, $width ) {
-		$this->{'col' . $col . 'width'} = $width;
-	}
-
-	public function set_class( $class ) {
-		$this->class = $class;
-	}
-
-	public function get_class() {
-		if ( $this->class )
-			$this->class = ' ' . trim( $this->class );
-		return $this->class;
-	}
-
-	function get_id() {
-		global $acfmod_current_section;
-		return $acfmod_current_section;
-	}
-
-	public function open() {
-		global $acfmod_sections, $acfmod_current_section;
-
-		$markup = '';
-		$section_open = false;
-
-		if ( isset( $acfmod_sections[ $acfmod_current_section ] ) ) {
-			$acfmod_sections[ $acfmod_current_section ]->current_col++;
-			$col_width = $acfmod_sections[ $acfmod_current_section ]->get_col_width();
-			$section_open = $acfmod_sections[ $acfmod_current_section ]->is_open();
-
-			$id = $acfmod_sections[ $acfmod_current_section ]->get_id();
-
-			$this->class .= ' section-column';
-			$this->class .= ' section-' . $id;
-
-			$markup .= '<style type="text/css">';
-				$markup .= '.section.section-' . $id . ',.section.two-column>.section.section-' . $id . ',.section.three-column>.section.section-' . $id . ',.section.four-column>.section.section-' . $id . ' {';
-					$markup .= 'width: ' . $col_width . '%;';
-				$markup .= '}';
-			$markup .= '</style>';
-		}
-
-		$markup .= "\r\n" . '<div class="section' . $this->get_class() . '">';
-
-		if ( ! $section_open )
-			if ( function_exists( 'genesis_structural_wrap' ) )
-				$markup .= genesis_structural_wrap( 'modular-section', 'open', false );
-
-		$this->open = true;
-
-		return $markup;
-	}
-
-	public function close() {
-		global $acfmod_sections, $acfmod_current_section;
-
-		$markup = '';
-
-		if ( isset( $acfmod_sections[ $acfmod_current_section ] ) )
-			$section_open = $acfmod_sections[ $acfmod_current_section ]->is_open();
-
-		if ( ! $section_open )
-			if ( function_exists( 'genesis_structural_wrap' ) )
-				$markup = genesis_structural_wrap( 'modular-section', 'close', false );
-
-		$markup .= '</div><!-- .section ' . $this->get_class() . ' -->' . "\r\n";
-
-		$this->open = false;
-
-		return $markup;
-	}
 }

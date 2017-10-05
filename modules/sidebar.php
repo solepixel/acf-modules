@@ -1,10 +1,22 @@
 <?php
+/**
+ * Sidebar ACF Module
+ *
+ * @package acf-modules
+ */
 
 add_filter( 'acfmod/layouts', 'acfmod_layout_sidebar', 72 );
 
+/**
+ * Sidebar Layout
+ *
+ * @param array $layouts  Layouts Field Array.
+ * @return array          Layouts, now with Sidebars
+ */
 function acfmod_layout_sidebar( $layouts ) {
-	if ( ! class_exists( 'acf_field_sidebar_selector' ) )
+	if ( ! class_exists( 'acf_field_sidebar_selector' ) ) {
 		return $layouts;
+	}
 
 	$layouts[] = array(
 		'key' => '556a634ee6232',
@@ -59,18 +71,23 @@ function acfmod_layout_sidebar( $layouts ) {
 
 add_filter( 'acfmod/modules/sidebar', 'acfmod_modules_sidebar' );
 
+/**
+ * Sidebar Module
+ *
+ * @return html  Module Output
+ */
 function acfmod_modules_sidebar() {
 	$output = '';
 
 	$sidebar = get_sub_field( 'sidebar' );
 
-	if ( $sidebar && is_active_sidebar( $sidebar ) ):
+	if ( $sidebar && is_active_sidebar( $sidebar ) ) {
 
 		ob_start();
 		dynamic_sidebar( $sidebar );
 		$output = ob_get_clean();
 
-	endif;
+	}
 
 	return $output;
 }

@@ -1,7 +1,18 @@
 <?php
+/**
+ * Counters ACF Module
+ *
+ * @package acf-modules
+ */
 
 add_filter( 'acfmod/layouts', 'acfmod_layout_counters', 60 );
 
+/**
+ * Counters Layout
+ *
+ * @param array $layouts  Layouts Field Array.
+ * @return array          Layouts, now with Counters
+ */
 function acfmod_layout_counters( $layouts ) {
 	$layouts[] = array(
 		'key' => '54490f40a6662',
@@ -252,86 +263,101 @@ add_filter( 'acfmod/modules/counters', 'acfmod_modules_counters' );
 global $acfmod_counters;
 $acfmod_counters = 0;
 
+/**
+ * Counters Module
+ */
 function acfmod_modules_counters() {
 	$style = get_sub_field( 'style' );
 	$direction = get_sub_field( 'direction' );
 	$attribute = 'color';
 
-	if ( $style == 'bar' ) {
+	if ( 'bar' === $style ) {
 		wp_enqueue_script( 'waypoints' );
 		$attribute = 'background-color';
 	} else {
 		wp_enqueue_script( 'jquery-counterup' );
 	}
-	if ( $style != 'plain' ) {
+
+	if ( 'plain' !== $style ) {
 		wp_enqueue_script( 'jquery-easypiechart' );
 	}
 
 	$output = '';
 
-	if ( have_rows( 'stats' ) ):
+	if ( have_rows( 'stats' ) ) {
 
 		global $acfmod_counters;
 		$output .= '<ul class="stats ' . $style . '">';
-			$largest = 0;
-			while( have_rows( 'stats' ) ): the_row();
-				$value = str_replace( array( ',', '%' ), '', get_sub_field( 'value' ) );
-				if ( $value > $largest )
-					$largest = $value;
-			endwhile;
+		$largest = 0;
 
-			while( have_rows( 'stats' ) ): the_row();
-				$acfmod_counters++;
-				$value = get_sub_field( 'value' );
-				$label = get_sub_field( 'label' );
-				$color = get_sub_field( 'color' );
-				$disable_text_color = get_sub_field( 'disable_text_color' );
-				$disable_bar_background = get_sub_field( 'disable_bar_background' );
-				$extra = '';
-				$css = '';
-				$wrap_start = '';
+		while ( have_rows( 'stats' ) ) :
+			the_row();
+			$value = str_replace( array( ',', '%' ), '', get_sub_field( 'value' ) );
+			if ( $value > $largest ) {
+				$largest = $value;
+			}
+		endwhile;
 
-				$number_value = str_replace( array( ',', '%' ), '', $value );
-				if ( $largest > 100 ) {
-					$number_value = ( $number_value / $largest ) * 100;
+		while ( have_rows( 'stats' ) ) :
+			the_row();
+
+			$acfmod_counters++;
+			$value = get_sub_field( 'value' );
+			$label = get_sub_field( 'label' );
+			$color = get_sub_field( 'color' );
+			$disable_text_color = get_sub_field( 'disable_text_color' );
+			$disable_bar_background = get_sub_field( 'disable_bar_background' );
+			$extra = '';
+			$css = '';
+			$wrap_start = '';
+
+			$number_value = str_replace( array( ',', '%' ), '', $value );
+			if ( $largest > 100 ) {
+				$number_value = ( $number_value / $largest ) * 100;
+			}
+
+			if ( 'bar' === $style ) {
+				$small = $number_value <= 5 ? ' small' : '';
+				$wrap_start = '<span class="progress' . $small . '" style="width:' . $number_value . '%;';
+				if ( ! $disable_bar_background ) {
+					$wrap_start .= 'background-color:' . $color . ';';
 				}
-
-				if ( $style == 'bar' ) {
-					$small = $number_value <= 5 ? ' small' : '';
-					$wrap_start = '<span class="progress' . $small . '" style="width:' . $number_value . '%;';
-					if ( ! $disable_bar_background )
-						$wrap_start .= 'background-color:' . $color . ';';
-					$wrap_start .= '">';
-					$extra = '</span>';
-					if ( $small ) {
-						$css = ' style="color:'. $color . ';"';
-					}
-				} else {
-					if ( ! $disable_text_color )
-						$css = ' style="color:' . $color . ';"';
-					if ( strpos( $value, '%' ) ) {
-						$value = str_replace( '%', '', $value );
-						$extra = '%';
-					}
+				$wrap_start .= '">';
+				$extra = '</span>';
+				if ( $small ) {
+					$css = ' style="color:' . esc_attr( $color ) . ';"';
 				}
+			} else {
+				if ( ! $disable_text_color ) {
+					$css = ' style="color:' . $color . ';"';
+				}
+				if ( strpos( $value, '%' ) ) {
+					$value = str_replace( '%', '', $value );
+					$extra = '%';
+				}
+			}
 
-				$direction = $direction == 'left' ? ' dir-left' : '';
-				$label = '<span class="label">' . $label . '</span>';
+			$direction = 'left' === $direction ? ' dir-left' : '';
+			$label = '<span class="label">' . $label . '</span>';
 
-				$output .= '<li class="counter-' . $acfmod_counters . $direction . '">';
-					if ( $style == 'bar' )
-						$output .= $label;
+			$output .= '<li class="counter-' . $acfmod_counters . $direction . '">';
 
-					$output .= '<h3 class="value" data-percent="' . esc_attr( $number_value ) . '" data-bar-color="' . esc_attr( $color ) . '"' . $css . '>' . $wrap_start . '<span class="data"><span class="counterup">' . $value . '</span>' . $extra . '</span></h3>';
+			if ( 'bar' === $style ) {
+				$output .= $label;
+			}
 
-					if ( $style != 'bar' )
-						$output .= $label;
+			$output .= '<h3 class="value" data-percent="' . esc_attr( $number_value ) . '" data-bar-color="' . esc_attr( $color ) . '"' . $css . '>' . $wrap_start . '<span class="data"><span class="counterup">' . $value . '</span>' . $extra . '</span></h3>';
 
-				$output .= '</li>';
-			endwhile;
+			if ( 'bar' !== $style ) {
+				$output .= $label;
+			}
+
+			$output .= '</li>';
+		endwhile;
+
 		$output .= '</ul>';
 
-	endif;
+	}
 
 	return $output;
 }
