@@ -2,14 +2,14 @@
 
 add_filter( 'acfmod/layouts', 'acfmod_layout_site_search', 85 );
 
-function acfmod_layout_site_search( $layouts ){
-	$layouts[] = array (
+function acfmod_layout_site_search( $layouts ) {
+	$layouts[] = array(
 		'key' => '54bc8ce7073a1',
 		'name' => 'site_search',
 		'label' => 'Site Search',
 		'display' => 'row',
-		'sub_fields' => array (
-			array (
+		'sub_fields' => array(
+			array(
 				'key' => 'field_54bc8cf7073a2',
 				'label' => 'Search Label',
 				'name' => 'search_label',
@@ -17,7 +17,7 @@ function acfmod_layout_site_search( $layouts ){
 				'instructions' => '',
 				'required' => 0,
 				'conditional_logic' => 0,
-				'wrapper' => array (
+				'wrapper' => array(
 					'width' => '',
 					'class' => '',
 					'id' => '',
@@ -30,7 +30,7 @@ function acfmod_layout_site_search( $layouts ){
 				'readonly' => 0,
 				'disabled' => 0,
 			),
-			array (
+			array(
 				'key' => 'field_54bfc3bcfb35f',
 				'label' => 'Search URL',
 				'name' => 'search_url',
@@ -38,7 +38,7 @@ function acfmod_layout_site_search( $layouts ){
 				'instructions' => '',
 				'required' => 0,
 				'conditional_logic' => 0,
-				'wrapper' => array (
+				'wrapper' => array(
 					'width' => '',
 					'class' => '',
 					'id' => '',
@@ -51,7 +51,7 @@ function acfmod_layout_site_search( $layouts ){
 				'readonly' => 0,
 				'disabled' => 0,
 			),
-			array (
+			array(
 				'key' => 'field_54bfc3cafb360',
 				'label' => 'Method',
 				'name' => 'method',
@@ -59,12 +59,12 @@ function acfmod_layout_site_search( $layouts ){
 				'instructions' => '',
 				'required' => 0,
 				'conditional_logic' => 0,
-				'wrapper' => array (
+				'wrapper' => array(
 					'width' => '',
 					'class' => '',
 					'id' => '',
 				),
-				'choices' => array (
+				'choices' => array(
 					'get' => 'GET',
 					'post' => 'POST',
 				),
@@ -73,7 +73,7 @@ function acfmod_layout_site_search( $layouts ){
 				'default_value' => 'get',
 				'layout' => 'vertical',
 			),
-			array (
+			array(
 				'key' => 'field_54bfc44500dcf',
 				'label' => 'Input Name',
 				'name' => 'input_name',
@@ -81,7 +81,7 @@ function acfmod_layout_site_search( $layouts ){
 				'instructions' => 'This is the name of the text input for the search',
 				'required' => 0,
 				'conditional_logic' => 0,
-				'wrapper' => array (
+				'wrapper' => array(
 					'width' => '',
 					'class' => '',
 					'id' => '',
@@ -104,7 +104,7 @@ function acfmod_layout_site_search( $layouts ){
 
 add_filter( 'acfmod/modules/site_search', 'acfmod_modules_site_search' );
 
-function acfmod_modules_site_search(){
+function acfmod_modules_site_search() {
 	$label = get_sub_field( 'search_label' );
 	$action = get_sub_field( 'search_url' ) ? get_sub_field( 'search_url' ) : '/';
 	$method = get_sub_field( 'method' ) ? get_sub_field( 'method' ) : 'get';

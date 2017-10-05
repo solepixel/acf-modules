@@ -2,14 +2,14 @@
 
 add_filter( 'acfmod/layouts', 'acfmod_layout_icon_blocks', 40 );
 
-function acfmod_layout_icon_blocks( $layouts ){
-	$layouts[] = array (
+function acfmod_layout_icon_blocks( $layouts ) {
+	$layouts[] = array(
 		'key' => '543eb572cb630',
 		'name' => 'icon_blocks',
 		'label' => 'Icon Blocks',
 		'display' => 'row',
-		'sub_fields' => array (
-			array (
+		'sub_fields' => array(
+			array(
 				'key' => 'field_5469b74ef1d78',
 				'label' => 'CSS Class',
 				'name' => 'css_class',
@@ -17,7 +17,7 @@ function acfmod_layout_icon_blocks( $layouts ){
 				'instructions' => '',
 				'required' => 0,
 				'conditional_logic' => 0,
-				'wrapper' => array (
+				'wrapper' => array(
 					'width' => '',
 					'class' => '',
 					'id' => '',
@@ -30,7 +30,7 @@ function acfmod_layout_icon_blocks( $layouts ){
 				'readonly' => 0,
 				'disabled' => 0,
 			),
-			array (
+			array(
 				'key' => 'field_543eb6b846edd',
 				'label' => 'Icons',
 				'name' => 'icons',
@@ -38,7 +38,7 @@ function acfmod_layout_icon_blocks( $layouts ){
 				'instructions' => '',
 				'required' => 0,
 				'conditional_logic' => 0,
-				'wrapper' => array (
+				'wrapper' => array(
 					'width' => '',
 					'class' => '',
 					'id' => '',
@@ -47,8 +47,8 @@ function acfmod_layout_icon_blocks( $layouts ){
 				'max' => 6,
 				'layout' => 'row',
 				'button_label' => 'Add Icon',
-				'sub_fields' => array (
-					array (
+				'sub_fields' => array(
+					array(
 						'key' => 'field_543eb580cb631',
 						'label' => 'Icon',
 						'name' => 'icon',
@@ -56,7 +56,7 @@ function acfmod_layout_icon_blocks( $layouts ){
 						'instructions' => '',
 						'required' => 0,
 						'conditional_logic' => 0,
-						'wrapper' => array (
+						'wrapper' => array(
 							'width' => '',
 							'class' => '',
 							'id' => '',
@@ -72,7 +72,7 @@ function acfmod_layout_icon_blocks( $layouts ){
 						'max_size' => 0,
 						'mime_types' => '',
 					),
-					array (
+					array(
 						'key' => 'field_543eb590cb632',
 						'label' => 'Heading',
 						'name' => 'heading',
@@ -80,7 +80,7 @@ function acfmod_layout_icon_blocks( $layouts ){
 						'instructions' => '',
 						'required' => 0,
 						'conditional_logic' => 0,
-						'wrapper' => array (
+						'wrapper' => array(
 							'width' => '',
 							'class' => '',
 							'id' => '',
@@ -93,7 +93,7 @@ function acfmod_layout_icon_blocks( $layouts ){
 						'readonly' => 0,
 						'disabled' => 0,
 					),
-					array (
+					array(
 						'key' => 'field_5460c8fde86b0',
 						'label' => 'Heading Color',
 						'name' => 'heading_color',
@@ -101,14 +101,14 @@ function acfmod_layout_icon_blocks( $layouts ){
 						'instructions' => '(optional)',
 						'required' => 0,
 						'conditional_logic' => 0,
-						'wrapper' => array (
+						'wrapper' => array(
 							'width' => '',
 							'class' => '',
 							'id' => '',
 						),
 						'default_value' => '',
 					),
-					array (
+					array(
 						'key' => 'field_543eb59dcb633',
 						'label' => 'Text Content',
 						'name' => 'text',
@@ -116,7 +116,7 @@ function acfmod_layout_icon_blocks( $layouts ){
 						'instructions' => '',
 						'required' => 0,
 						'conditional_logic' => 0,
-						'wrapper' => array (
+						'wrapper' => array(
 							'width' => '',
 							'class' => '',
 							'id' => '',
@@ -129,7 +129,7 @@ function acfmod_layout_icon_blocks( $layouts ){
 						'readonly' => 0,
 						'disabled' => 0,
 					),
-					array (
+					array(
 						'key' => 'field_543eb5bfcb634',
 						'label' => 'Page Link',
 						'name' => 'page_link',
@@ -137,20 +137,20 @@ function acfmod_layout_icon_blocks( $layouts ){
 						'instructions' => '',
 						'required' => 0,
 						'conditional_logic' => 0,
-						'wrapper' => array (
+						'wrapper' => array(
 							'width' => '',
 							'class' => '',
 							'id' => '',
 						),
-						'post_type' => array (
+						'post_type' => array(
 							0 => 'page',
 						),
-						'taxonomy' => array (
+						'taxonomy' => array(
 						),
 						'allow_null' => 1,
 						'multiple' => 0,
 					),
-					array (
+					array(
 						'key' => 'field_543eb5d7cb635',
 						'label' => 'Custom URL',
 						'name' => 'custom_url',
@@ -158,7 +158,7 @@ function acfmod_layout_icon_blocks( $layouts ){
 						'instructions' => '',
 						'required' => 0,
 						'conditional_logic' => 0,
-						'wrapper' => array (
+						'wrapper' => array(
 							'width' => '',
 							'class' => '',
 							'id' => '',
@@ -166,7 +166,7 @@ function acfmod_layout_icon_blocks( $layouts ){
 						'default_value' => '',
 						'placeholder' => '',
 					),
-					array (
+					array(
 						'key' => 'field_558a23ed3389b',
 						'label' => 'Link Target',
 						'name' => 'link_target',
@@ -174,18 +174,18 @@ function acfmod_layout_icon_blocks( $layouts ){
 						'instructions' => '',
 						'required' => 0,
 						'conditional_logic' => 0,
-						'wrapper' => array (
+						'wrapper' => array(
 							'width' => '',
 							'class' => '',
 							'id' => '',
 						),
-						'choices' => array (
+						'choices' => array(
 							'_blank' => 'Blank (New Window)',
 							'_top' => 'Top',
 							'_parent' => 'Parent',
 							'_self' => 'Self',
 						),
-						'default_value' => array (
+						'default_value' => array(
 							'' => '',
 						),
 						'allow_null' => 1,
@@ -196,7 +196,7 @@ function acfmod_layout_icon_blocks( $layouts ){
 						'disabled' => 0,
 						'readonly' => 0,
 					),
-					array (
+					array(
 						'key' => 'field_543eb5ebcb636',
 						'label' => 'Call to Action Text',
 						'name' => 'cta_text',
@@ -204,7 +204,7 @@ function acfmod_layout_icon_blocks( $layouts ){
 						'instructions' => '',
 						'required' => 0,
 						'conditional_logic' => 0,
-						'wrapper' => array (
+						'wrapper' => array(
 							'width' => '',
 							'class' => '',
 							'id' => '',
@@ -229,19 +229,19 @@ function acfmod_layout_icon_blocks( $layouts ){
 
 add_action( 'wp_enqueue_scripts', 'acfmod_register_icon_blocks_enqueues' );
 
-function acfmod_register_icon_blocks_enqueues(){
+function acfmod_register_icon_blocks_enqueues() {
 	wp_register_style( 'acfmod-icon-blocks', ACFMOD_URI . 'assets/css/icon-blocks.min.css' );
 }
 
 add_filter( 'acfmod/modules/icon_blocks', 'acfmod_modules_icon_blocks' );
 
-function acfmod_modules_icon_blocks(){
+function acfmod_modules_icon_blocks() {
 	$output = '';
 
 	$css_class = trim( get_sub_field( 'css_class' ) );
 	$count = count( get_sub_field( 'icons' ) );
 
-	if( have_rows( 'icons' ) ):
+	if ( have_rows( 'icons' ) ):
 		wp_enqueue_style( 'acfmod-icon-blocks' );
 
 		$output .= '<ul class="icon-blocks count-' . $count . ' ' . esc_attr( $css_class ) . '">';
@@ -250,33 +250,33 @@ function acfmod_modules_icon_blocks(){
 				$link = acfmod_get_the_link();
 				$target = get_sub_field( 'link_target' );
 				// i don't know why, but for some reason it may return an array.
-				if( is_array( $target ) && count( $target ) > 0 )
+				if ( is_array( $target ) && count( $target ) > 0 )
 					$target = reset( $target );
 				$target = $target ? ' target="' . $target . '"' : '';
 
 				$output .= '<li>';
 
-					if( $link ):
+					if ( $link ):
 						$output .= '<a href="' . $link . '"' . $target . '>';
 					endif;
 
-					if( $image )
+					if ( $image )
 						$output .= '<span class="icon" style="background-image:url(\'' . esc_attr( $image['url'] ) . '\');"></span>';
 
-					if( $heading = get_sub_field( 'heading' ) ):
+					if ( $heading = get_sub_field( 'heading' ) ):
 						$heading_color = get_sub_field( 'heading_color' ) ? ' style="color:' . get_sub_field( 'heading_color' ) . ';"' : '';
 						$output .= '<span class="heading"' . $heading_color . '>' . $heading . '</span>';
 					endif;
 
-					if( $text = get_sub_field( 'text' ) ):
+					if ( $text = get_sub_field( 'text' ) ):
 						$output .= '<span class="text">' . $text . '</span>';
 					endif;
 
-					if( $cta_text = get_sub_field( 'cta_text' ) ):
+					if ( $cta_text = get_sub_field( 'cta_text' ) ):
 						$output .= '<span class="cta">' . $cta_text . '</span>';
 					endif;
 
-					if( $link ):
+					if ( $link ):
 						$output .= '</a>';
 					endif;
 				$output .= '</li>';

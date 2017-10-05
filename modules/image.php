@@ -2,14 +2,14 @@
 
 add_filter( 'acfmod/layouts', 'acfmod_layout_image', 50 );
 
-function acfmod_layout_image( $layouts ){
-	$layouts[] = array (
+function acfmod_layout_image( $layouts ) {
+	$layouts[] = array(
 		'key' => '543eb643cb639',
 		'name' => 'image',
 		'label' => 'Image',
 		'display' => 'row',
-		'sub_fields' => array (
-			array (
+		'sub_fields' => array(
+			array(
 				'key' => 'field_543eb656cb63a',
 				'label' => 'Source',
 				'name' => 'source',
@@ -17,7 +17,7 @@ function acfmod_layout_image( $layouts ){
 				'instructions' => '',
 				'required' => 0,
 				'conditional_logic' => 0,
-				'wrapper' => array (
+				'wrapper' => array(
 					'width' => '',
 					'class' => '',
 					'id' => '',
@@ -33,7 +33,7 @@ function acfmod_layout_image( $layouts ){
 				'max_size' => 0,
 				'mime_types' => '',
 			),
-			array (
+			array(
 				'key' => 'field_54f7658a3cab1',
 				'label' => 'Thumbnail Size',
 				'name' => 'thumb_size',
@@ -41,12 +41,12 @@ function acfmod_layout_image( $layouts ){
 				'instructions' => '',
 				'required' => 0,
 				'conditional_logic' => 0,
-				'wrapper' => array (
+				'wrapper' => array(
 					'width' => '',
 					'class' => '',
 					'id' => '',
 				),
-				'choices' => array (
+				'choices' => array(
 					'__full__' => 'Full Size',
 					'thumbnail' => 'Thumbnail (150x150)',
 					'medium' => 'Medium (300x300)',
@@ -54,7 +54,7 @@ function acfmod_layout_image( $layouts ){
 					'itrade-image-module' => 'itrade-image-module (360x300)',
 					'sow-carousel-default' => 'sow-carousel-default (272x182)',
 				),
-				'default_value' => array (
+				'default_value' => array(
 					'' => '',
 				),
 				'allow_null' => 0,
@@ -65,7 +65,7 @@ function acfmod_layout_image( $layouts ){
 				'disabled' => 0,
 				'readonly' => 0,
 			),
-			array (
+			array(
 				'key' => 'field_54414ac1d04a9',
 				'label' => 'Max Width',
 				'name' => 'max_width',
@@ -73,7 +73,7 @@ function acfmod_layout_image( $layouts ){
 				'instructions' => '',
 				'required' => 1,
 				'conditional_logic' => 0,
-				'wrapper' => array (
+				'wrapper' => array(
 					'width' => '',
 					'class' => '',
 					'id' => '',
@@ -88,7 +88,7 @@ function acfmod_layout_image( $layouts ){
 				'readonly' => 0,
 				'disabled' => 0,
 			),
-			array (
+			array(
 				'key' => 'field_543ffeaa05eb9',
 				'label' => 'Alignment',
 				'name' => 'alignment',
@@ -96,18 +96,18 @@ function acfmod_layout_image( $layouts ){
 				'instructions' => '',
 				'required' => 0,
 				'conditional_logic' => 0,
-				'wrapper' => array (
+				'wrapper' => array(
 					'width' => '',
 					'class' => '',
 					'id' => '',
 				),
-				'choices' => array (
+				'choices' => array(
 					'none' => 'None',
 					'center' => 'Center',
 					'left' => 'Left',
 					'right' => 'Right',
 				),
-				'default_value' => array (
+				'default_value' => array(
 				),
 				'allow_null' => 0,
 				'multiple' => 0,
@@ -117,7 +117,7 @@ function acfmod_layout_image( $layouts ){
 				'disabled' => 0,
 				'readonly' => 0,
 			),
-			array (
+			array(
 				'key' => 'field_54bc816c7e634',
 				'label' => 'Caption',
 				'name' => 'caption',
@@ -125,7 +125,7 @@ function acfmod_layout_image( $layouts ){
 				'instructions' => '',
 				'required' => 0,
 				'conditional_logic' => 0,
-				'wrapper' => array (
+				'wrapper' => array(
 					'width' => '',
 					'class' => '',
 					'id' => '',
@@ -138,7 +138,7 @@ function acfmod_layout_image( $layouts ){
 				'readonly' => 0,
 				'disabled' => 0,
 			),
-			array (
+			array(
 				'key' => 'field_543eb66dcb63b',
 				'label' => 'Page Link',
 				'name' => 'page_link',
@@ -146,20 +146,20 @@ function acfmod_layout_image( $layouts ){
 				'instructions' => '',
 				'required' => 0,
 				'conditional_logic' => 0,
-				'wrapper' => array (
+				'wrapper' => array(
 					'width' => '',
 					'class' => '',
 					'id' => '',
 				),
-				'post_type' => array (
+				'post_type' => array(
 					0 => 'page',
 				),
-				'taxonomy' => array (
+				'taxonomy' => array(
 				),
 				'allow_null' => 1,
 				'multiple' => 0,
 			),
-			array (
+			array(
 				'key' => 'field_543eb680cb63c',
 				'label' => 'Custom URL',
 				'name' => 'custom_url',
@@ -167,7 +167,7 @@ function acfmod_layout_image( $layouts ){
 				'instructions' => '',
 				'required' => 0,
 				'conditional_logic' => 0,
-				'wrapper' => array (
+				'wrapper' => array(
 					'width' => '',
 					'class' => '',
 					'id' => '',
@@ -175,7 +175,7 @@ function acfmod_layout_image( $layouts ){
 				'default_value' => '',
 				'placeholder' => '',
 			),
-			array (
+			array(
 				'key' => 'field_5459b5d3ee4a8',
 				'label' => 'Module Styles',
 				'name' => 'module_styles',
@@ -183,7 +183,7 @@ function acfmod_layout_image( $layouts ){
 				'instructions' => 'Apply CSS directly to the module container element. Use to tweak positioning/layouts to perfection.',
 				'required' => 0,
 				'conditional_logic' => 0,
-				'wrapper' => array (
+				'wrapper' => array(
 					'width' => '',
 					'class' => '',
 					'id' => '',
@@ -206,7 +206,7 @@ function acfmod_layout_image( $layouts ){
 
 add_filter( 'acfmod/modules/image', 'acfmod_modules_image' );
 
-function acfmod_modules_image(){
+function acfmod_modules_image() {
 	$source = get_sub_field( 'source' );
 	$alignment = get_sub_field( 'alignment' );
 	$max_width = get_sub_field( 'max_width' );
@@ -218,7 +218,7 @@ function acfmod_modules_image(){
 
 	$output = '';
 
-	if( $link ):
+	if ( $link ):
 		$output .= '<a href="' . $link . '" class="image-wrap">';
 	else:
 		$output .= '<span class="image-wrap">';
@@ -228,11 +228,11 @@ function acfmod_modules_image(){
 
 	$output .= '<img src="' . $src . '" class="align' . $alignment . '"' . $style . ' />';
 
-	if( $caption ):
+	if ( $caption ):
 		$output .= '<span class="image-caption">' . $caption . '</span>';
 	endif;
 
-	if( $link ):
+	if ( $link ):
 		$output .= '</a>';
 	else:
 		$output .= '</span>';
@@ -263,7 +263,7 @@ function bdmod_image_sizes_choices( $field ) {
 
     global $_wp_additional_image_sizes;
 
-    if( is_array( $_wp_additional_image_sizes ) ) {
+    if ( is_array( $_wp_additional_image_sizes ) ) {
 
         foreach( $_wp_additional_image_sizes as $name => $size ) {
 

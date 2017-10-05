@@ -4,14 +4,14 @@
 
 add_filter( 'acfmod/layouts', 'acfmod_layout_section_opener', 200 );
 
-function acfmod_layout_section_opener( $layouts ){
-	$layouts[] = array (
+function acfmod_layout_section_opener( $layouts ) {
+	$layouts[] = array(
 		'key' => '5442a3ba54f67',
 		'name' => 'section',
 		'label' => 'Section Opener',
 		'display' => 'row',
-		'sub_fields' => array (
-			array (
+		'sub_fields' => array(
+			array(
 				'key' => 'field_5442a3c954f68',
 				'label' => 'Class',
 				'name' => 'section_class',
@@ -19,12 +19,12 @@ function acfmod_layout_section_opener( $layouts ){
 				'instructions' => '',
 				'required' => 0,
 				'conditional_logic' => 0,
-				'wrapper' => array (
+				'wrapper' => array(
 					'width' => '',
 					'class' => '',
 					'id' => '',
 				),
-				'choices' => array (
+				'choices' => array(
 					'light-gray' => 'Light Gray',
 					'medium-gray' => 'Medium Gray',
 					'dark-gray' => 'Dark Gray',
@@ -32,7 +32,7 @@ function acfmod_layout_section_opener( $layouts ){
 					'three-column' => 'Three Column',
 					'four-column' => 'Four Column',
 				),
-				'default_value' => array (
+				'default_value' => array(
 				),
 				'allow_null' => 1,
 				'multiple' => 1,
@@ -42,7 +42,7 @@ function acfmod_layout_section_opener( $layouts ){
 				'disabled' => 0,
 				'readonly' => 0,
 			),
-			array (
+			array(
 				'key' => 'field_5451a71c9b3b3',
 				'label' => 'Custom Class',
 				'name' => 'custom_class',
@@ -50,7 +50,7 @@ function acfmod_layout_section_opener( $layouts ){
 				'instructions' => '',
 				'required' => 0,
 				'conditional_logic' => 0,
-				'wrapper' => array (
+				'wrapper' => array(
 					'width' => '',
 					'class' => '',
 					'id' => '',
@@ -63,7 +63,7 @@ function acfmod_layout_section_opener( $layouts ){
 				'readonly' => 0,
 				'disabled' => 0,
 			),
-			array (
+			array(
 				'key' => 'field_544e6b7557a78',
 				'label' => 'Close previous section?',
 				'name' => 'close_previous_section',
@@ -71,12 +71,12 @@ function acfmod_layout_section_opener( $layouts ){
 				'instructions' => '',
 				'required' => 0,
 				'conditional_logic' => 0,
-				'wrapper' => array (
+				'wrapper' => array(
 					'width' => '',
 					'class' => '',
 					'id' => '',
 				),
-				'choices' => array (
+				'choices' => array(
 					1 => 'Yes',
 					0 => 'No',
 				),
@@ -85,37 +85,37 @@ function acfmod_layout_section_opener( $layouts ){
 				'default_value' => '',
 				'layout' => 'horizontal',
 			),
-			array (
+			array(
 				'key' => 'field_5450697b1cded',
 				'label' => 'Column 1 Width',
 				'name' => 'col_1',
 				'type' => 'number',
 				'instructions' => 'If left empty, defaults are set to equal width columns ',
 				'required' => 0,
-				'conditional_logic' => array (
-					array (
-						array (
+				'conditional_logic' => array(
+					array(
+						array(
 							'field' => 'field_5442a3c954f68',
 							'operator' => '==',
 							'value' => 'two-column',
 						),
 					),
-					array (
-						array (
+					array(
+						array(
 							'field' => 'field_5442a3c954f68',
 							'operator' => '==',
 							'value' => 'three-column',
 						),
 					),
-					array (
-						array (
+					array(
+						array(
 							'field' => 'field_5442a3c954f68',
 							'operator' => '==',
 							'value' => 'four-column',
 						),
 					),
 				),
-				'wrapper' => array (
+				'wrapper' => array(
 					'width' => '',
 					'class' => '',
 					'id' => '',
@@ -130,37 +130,37 @@ function acfmod_layout_section_opener( $layouts ){
 				'readonly' => 0,
 				'disabled' => 0,
 			),
-			array (
+			array(
 				'key' => 'field_54506a171cdf0',
 				'label' => 'Column 2 Width',
 				'name' => 'col_2',
 				'type' => 'number',
 				'instructions' => '',
 				'required' => 0,
-				'conditional_logic' => array (
-					array (
-						array (
+				'conditional_logic' => array(
+					array(
+						array(
 							'field' => 'field_5442a3c954f68',
 							'operator' => '==',
 							'value' => 'two-column',
 						),
 					),
-					array (
-						array (
+					array(
+						array(
 							'field' => 'field_5442a3c954f68',
 							'operator' => '==',
 							'value' => 'three-column',
 						),
 					),
-					array (
-						array (
+					array(
+						array(
 							'field' => 'field_5442a3c954f68',
 							'operator' => '==',
 							'value' => 'four-column',
 						),
 					),
 				),
-				'wrapper' => array (
+				'wrapper' => array(
 					'width' => '',
 					'class' => '',
 					'id' => '',
@@ -175,30 +175,30 @@ function acfmod_layout_section_opener( $layouts ){
 				'readonly' => 0,
 				'disabled' => 0,
 			),
-			array (
+			array(
 				'key' => 'field_54506a3c1cdf1',
 				'label' => 'Column 3 Width',
 				'name' => 'col_3',
 				'type' => 'number',
 				'instructions' => '',
 				'required' => 0,
-				'conditional_logic' => array (
-					array (
-						array (
+				'conditional_logic' => array(
+					array(
+						array(
 							'field' => 'field_5442a3c954f68',
 							'operator' => '==',
 							'value' => 'three-column',
 						),
 					),
-					array (
-						array (
+					array(
+						array(
 							'field' => 'field_5442a3c954f68',
 							'operator' => '==',
 							'value' => 'four-column',
 						),
 					),
 				),
-				'wrapper' => array (
+				'wrapper' => array(
 					'width' => '',
 					'class' => '',
 					'id' => '',
@@ -213,23 +213,23 @@ function acfmod_layout_section_opener( $layouts ){
 				'readonly' => 0,
 				'disabled' => 0,
 			),
-			array (
+			array(
 				'key' => 'field_54506a621cdf2',
 				'label' => 'Column 4 Width',
 				'name' => 'col_4',
 				'type' => 'number',
 				'instructions' => '',
 				'required' => 0,
-				'conditional_logic' => array (
-					array (
-						array (
+				'conditional_logic' => array(
+					array(
+						array(
 							'field' => 'field_5442a3c954f68',
 							'operator' => '==',
 							'value' => 'four-column',
 						),
 					),
 				),
-				'wrapper' => array (
+				'wrapper' => array(
 					'width' => '',
 					'class' => '',
 					'id' => '',
@@ -254,14 +254,14 @@ function acfmod_layout_section_opener( $layouts ){
 
 add_filter( 'acfmod/layouts', 'acfmod_layout_section_closer', 201 );
 
-function acfmod_layout_section_closer( $layouts ){
-	$layouts[] = array (
+function acfmod_layout_section_closer( $layouts ) {
+	$layouts[] = array(
 		'key' => '5442a42254f69',
 		'name' => 'section_closer',
 		'label' => 'Section Closer',
 		'display' => 'row',
-		'sub_fields' => array (
-			array (
+		'sub_fields' => array(
+			array(
 				'key' => 'field_5442a43e54f6a',
 				'label' => 'Closing Element',
 				'name' => '',
@@ -269,7 +269,7 @@ function acfmod_layout_section_closer( $layouts ){
 				'instructions' => '',
 				'required' => 0,
 				'conditional_logic' => 0,
-				'wrapper' => array (
+				'wrapper' => array(
 					'width' => '',
 					'class' => '',
 					'id' => '',
@@ -288,12 +288,12 @@ function acfmod_layout_section_closer( $layouts ){
 
 add_action( 'wp_enqueue_scripts', 'acfmod_register_section_enqueues' );
 
-function acfmod_register_section_enqueues(){
+function acfmod_register_section_enqueues() {
 	wp_register_style( 'acfmod-sections', ACFMOD_URI . 'assets/css/sections.min.css' );
 }
 
 
-function acfmod_open_section( $content = '' ){
+function acfmod_open_section( $content = '' ) {
 
 	wp_enqueue_style( 'acfmod-sections' );
 
@@ -301,13 +301,13 @@ function acfmod_open_section( $content = '' ){
 
 	$class = get_sub_field( 'section_class' );
 
-	if( ! is_array( $class ) )
+	if ( ! is_array( $class ) )
 		$class = $class ? array( $class ) : array();
 
-	if( $custom_class = get_sub_field( 'custom_class' ) )
+	if ( $custom_class = get_sub_field( 'custom_class' ) )
 		$class[] = $custom_class;
 
-	if( count( $class ) )
+	if ( count( $class ) )
 		$class = ' ' . implode( ' ', $class );
 	else
 		$class = '';
@@ -315,7 +315,7 @@ function acfmod_open_section( $content = '' ){
 	$section = new ACFMOD_Section();
 	$section->set_class( $class );
 
-	for( $i = 1; $i <= 4; $i++ ){
+	for( $i = 1; $i <= 4; $i++ ) {
 		$section->set_col_width( $i, get_sub_field( 'col_' . $i ) );
 	}
 
@@ -323,7 +323,7 @@ function acfmod_open_section( $content = '' ){
 	$content .= $section->open();
 
 	// instantiate current section, or increase by one
-	if( ! $acfmod_current_section && $acfmod_current_section !== 0 )
+	if ( ! $acfmod_current_section && $acfmod_current_section !== 0 )
 		$acfmod_current_section = 0;
 	else
 		$acfmod_current_section++;
@@ -334,13 +334,13 @@ function acfmod_open_section( $content = '' ){
 	return $content;
 }
 
-function acfmod_close_section( $content = '' ){
+function acfmod_close_section( $content = '' ) {
 	global $acfmod_sections, $acfmod_current_section;
 
-	if( ! count( $acfmod_sections ) )
+	if ( ! count( $acfmod_sections ) )
 		return $content;
 
-	if( isset( $acfmod_sections[ $acfmod_current_section ] ) && $acfmod_sections[ $acfmod_current_section ]->is_open() ){
+	if ( isset( $acfmod_sections[ $acfmod_current_section ] ) && $acfmod_sections[ $acfmod_current_section ]->is_open() ) {
 		$content .= $acfmod_sections[ $acfmod_current_section ]->close();
 		unset( $acfmod_sections[ $acfmod_current_section ] );
 		$acfmod_current_section--;
@@ -349,11 +349,11 @@ function acfmod_close_section( $content = '' ){
 	return $content;
 }
 
-function acfmod_close_sections( $content = '' ){
+function acfmod_close_sections( $content = '' ) {
 	global $acfmod_sections;
 
 	# close any sections still open
-	if( count( $acfmod_sections ) ):
+	if ( count( $acfmod_sections ) ):
 		foreach( $acfmod_sections as $key => $section ):
 			$content .= acfmod_close_section();
 		endforeach;
@@ -370,47 +370,47 @@ class ACFMOD_Section {
 
 	var $current_col = 0;
 
-	public function is_open(){
+	public function is_open() {
 		return $this->open;
 	}
 
-	public function get_col_width( $col = NULL ){
-		if( $col === NULL )
+	public function get_col_width( $col = NULL ) {
+		if ( $col === NULL )
 			$col = $this->current_col;
 
-		if( isset( $this->{'col' . $col . 'width'} ) ){
+		if ( isset( $this->{'col' . $col . 'width'} ) ) {
 			return $this->{'col' . $col . 'width'};
 		}
 
 		return false;
 	}
 
-	public function set_col_width( $col, $width ){
+	public function set_col_width( $col, $width ) {
 		$this->{'col' . $col . 'width'} = $width;
 	}
 
-	public function set_class( $class ){
+	public function set_class( $class ) {
 		$this->class = $class;
 	}
 
-	public function get_class(){
-		if( $this->class )
+	public function get_class() {
+		if ( $this->class )
 			$this->class = ' ' . trim( $this->class );
 		return $this->class;
 	}
 
-	function get_id(){
+	function get_id() {
 		global $acfmod_current_section;
 		return $acfmod_current_section;
 	}
 
-	public function open(){
+	public function open() {
 		global $acfmod_sections, $acfmod_current_section;
 
 		$markup = '';
 		$section_open = false;
 
-		if( isset( $acfmod_sections[ $acfmod_current_section ] ) ){
+		if ( isset( $acfmod_sections[ $acfmod_current_section ] ) ) {
 			$acfmod_sections[ $acfmod_current_section ]->current_col++;
 			$col_width = $acfmod_sections[ $acfmod_current_section ]->get_col_width();
 			$section_open = $acfmod_sections[ $acfmod_current_section ]->is_open();
@@ -429,8 +429,8 @@ class ACFMOD_Section {
 
 		$markup .= "\r\n" . '<div class="section' . $this->get_class() . '">';
 
-		if( ! $section_open )
-			if( function_exists( 'genesis_structural_wrap' ) )
+		if ( ! $section_open )
+			if ( function_exists( 'genesis_structural_wrap' ) )
 				$markup .= genesis_structural_wrap( 'modular-section', 'open', false );
 
 		$this->open = true;
@@ -438,16 +438,16 @@ class ACFMOD_Section {
 		return $markup;
 	}
 
-	public function close(){
+	public function close() {
 		global $acfmod_sections, $acfmod_current_section;
 
 		$markup = '';
 
-		if( isset( $acfmod_sections[ $acfmod_current_section ] ) )
+		if ( isset( $acfmod_sections[ $acfmod_current_section ] ) )
 			$section_open = $acfmod_sections[ $acfmod_current_section ]->is_open();
 
-		if( ! $section_open )
-			if( function_exists( 'genesis_structural_wrap' ) )
+		if ( ! $section_open )
+			if ( function_exists( 'genesis_structural_wrap' ) )
 				$markup = genesis_structural_wrap( 'modular-section', 'close', false );
 
 		$markup .= '</div><!-- .section ' . $this->get_class() . ' -->' . "\r\n";

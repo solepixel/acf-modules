@@ -2,14 +2,14 @@
 
 add_filter( 'acfmod/layouts', 'acfmod_layout_posts', 55 );
 
-function acfmod_layout_posts( $layouts ){
-	$layouts[] = array (
+function acfmod_layout_posts( $layouts ) {
+	$layouts[] = array(
 		'key' => '543ebbc2231a8',
 		'name' => 'posts',
 		'label' => 'Posts',
 		'display' => 'row',
-		'sub_fields' => array (
-			array (
+		'sub_fields' => array(
+			array(
 				'key' => 'field_543ebbcc231a9',
 				'label' => 'Post Type',
 				'name' => 'post_type',
@@ -17,17 +17,17 @@ function acfmod_layout_posts( $layouts ){
 				'instructions' => '',
 				'required' => 0,
 				'conditional_logic' => 0,
-				'wrapper' => array (
+				'wrapper' => array(
 					'width' => '',
 					'class' => '',
 					'id' => '',
 				),
-				'choices' => array (
+				'choices' => array(
 					'post' => 'Posts',
 					'page' => 'Pages',
 					'safecss' => 'Custom CSS',
 				),
-				'default_value' => array (
+				'default_value' => array(
 				),
 				'allow_null' => 0,
 				'multiple' => 0,
@@ -37,7 +37,7 @@ function acfmod_layout_posts( $layouts ){
 				'disabled' => 0,
 				'readonly' => 0,
 			),
-			array (
+			array(
 				'key' => 'field_543ebc32231aa',
 				'label' => 'Number of Items',
 				'name' => 'limit',
@@ -45,7 +45,7 @@ function acfmod_layout_posts( $layouts ){
 				'instructions' => '',
 				'required' => 0,
 				'conditional_logic' => 0,
-				'wrapper' => array (
+				'wrapper' => array(
 					'width' => '',
 					'class' => '',
 					'id' => '',
@@ -60,7 +60,7 @@ function acfmod_layout_posts( $layouts ){
 				'readonly' => 0,
 				'disabled' => 0,
 			),
-			array (
+			array(
 				'key' => 'field_5464d11be4051',
 				'label' => 'Post Categories',
 				'name' => 'categories',
@@ -68,7 +68,7 @@ function acfmod_layout_posts( $layouts ){
 				'instructions' => '',
 				'required' => 0,
 				'conditional_logic' => 0,
-				'wrapper' => array (
+				'wrapper' => array(
 					'width' => '',
 					'class' => '',
 					'id' => '',
@@ -81,7 +81,7 @@ function acfmod_layout_posts( $layouts ){
 				'multiple' => 0,
 				'add_term' => 1,
 			),
-			array (
+			array(
 				'key' => 'field_5464d17ee4052',
 				'label' => 'Post Tags',
 				'name' => 'tags',
@@ -89,7 +89,7 @@ function acfmod_layout_posts( $layouts ){
 				'instructions' => '',
 				'required' => 0,
 				'conditional_logic' => 0,
-				'wrapper' => array (
+				'wrapper' => array(
 					'width' => '',
 					'class' => '',
 					'id' => '',
@@ -102,7 +102,7 @@ function acfmod_layout_posts( $layouts ){
 				'multiple' => 0,
 				'add_term' => 1,
 			),
-			array (
+			array(
 				'key' => 'field_544259ad54d37',
 				'label' => 'Placeholder Image',
 				'name' => 'placeholder',
@@ -110,7 +110,7 @@ function acfmod_layout_posts( $layouts ){
 				'instructions' => 'Image to be used if posts do not have an image.',
 				'required' => 0,
 				'conditional_logic' => 0,
-				'wrapper' => array (
+				'wrapper' => array(
 					'width' => '',
 					'class' => '',
 					'id' => '',
@@ -126,7 +126,7 @@ function acfmod_layout_posts( $layouts ){
 				'max_size' => 0,
 				'mime_types' => '',
 			),
-			array (
+			array(
 				'key' => 'field_5449d2b639de2',
 				'label' => 'Display Options',
 				'name' => 'display_options',
@@ -134,18 +134,18 @@ function acfmod_layout_posts( $layouts ){
 				'instructions' => '',
 				'required' => 0,
 				'conditional_logic' => 0,
-				'wrapper' => array (
+				'wrapper' => array(
 					'width' => '',
 					'class' => '',
 					'id' => '',
 				),
-				'choices' => array (
+				'choices' => array(
 					'post_title' => 'Post Title',
 					'post_image' => 'Post Image',
 					'post_date' => 'Post Date',
 					'post_excerpt' => 'Post Excerpt',
 				),
-				'default_value' => array (
+				'default_value' => array(
 					'post_title' => 'post_title',
 					'post_image' => 'post_image',
 					'post_date' => 'post_date',
@@ -163,7 +163,7 @@ function acfmod_layout_posts( $layouts ){
 
 add_filter( 'acfmod/modules/posts', 'acfmod_modules_posts' );
 
-function acfmod_modules_posts(){
+function acfmod_modules_posts() {
 	$placeholder = get_sub_field( 'placeholder' );
 	$display_options = get_sub_field( 'display_options' );
 	$categories = get_sub_field( 'categories' );
@@ -175,56 +175,56 @@ function acfmod_modules_posts(){
 		'posts_per_page' => get_sub_field( 'limit' )
 	);
 
-	if( $categories )
+	if ( $categories )
 		$args['category__in'] = $categories;
 
-	if( $tags )
+	if ( $tags )
 		$args['tag__in'] = $tags;
 
 
 	$results = new WP_Query( $args );
 
-	if( ! is_array( $display_options ) ){
+	if ( ! is_array( $display_options ) ) {
 		$display_options = array();
 	}
 
-	if( $results->have_posts() ):
+	if ( $results->have_posts() ):
 		$output .= '<ul>';
 			$i = 1;
 			while( $results->have_posts() ): $results->the_post();
-				if( $image = acfmod_get_post_image() )
+				if ( $image = acfmod_get_post_image() )
 					$image = $image['url'];
-				if( ! $image && function_exists( 'get_the_image' ) ){
-					if( $image = get_the_image( array( 'echo' => false, 'format' => 'array' ) ) )
+				if ( ! $image && function_exists( 'get_the_image' ) ) {
+					if ( $image = get_the_image( array( 'echo' => false, 'format' => 'array' ) ) )
 						$image = $image['url'];
 				}
-				if( ! $image && $placeholder )
+				if ( ! $image && $placeholder )
 					$image = $placeholder['url'];
 
 				$nth = 'first';
-				if( $i % 4 == 2 ){
+				if ( $i % 4 == 2 ) {
 					$nth = 'second';
-				} elseif( $i % 4 == 3 ){
+				} elseif ( $i % 4 == 3 ) {
 					$nth = 'third';
-				} elseif( $i % 4 == 0 ){
+				} elseif ( $i % 4 == 0 ) {
 					$nth = 'fourth';
 				}
 
 				$output .= '<li class="' . $nth . '-entry">';
-					if( $image && in_array( 'post_image', $display_options ) ):
+					if ( $image && in_array( 'post_image', $display_options ) ):
 						$output .= '<a href="' . get_permalink() . '" class="post-image">
 							<span class="read-more">' . __( 'Read More', 'acfmod' ) . '</span>
 							<img src="' . $image . '" />
 						</a>';
 					endif;
 
-					if( in_array( 'post_title', $display_options ) )
+					if ( in_array( 'post_title', $display_options ) )
 						$output .= '<span class="post-title"><a href="' . get_permalink() . '">' . get_the_title() . '</a></span>';
 
-					if( in_array( 'post_date', $display_options ) )
+					if ( in_array( 'post_date', $display_options ) )
 						$output .= '<span class="post-date">' . get_the_date( 'F j, Y' ) . '</span>';
 
-					if( in_array( 'post_excerpt', $display_options ) )
+					if ( in_array( 'post_excerpt', $display_options ) )
 						$output .= '<span class="post-excerpt">' . get_the_excerpt() . '</span>';
 				$output .= '</li>';
 

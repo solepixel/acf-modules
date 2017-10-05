@@ -17,7 +17,7 @@
 
 add_filter( 'acfmod/layouts', 'acfmod_layout_[module]', 70 );
 
-function acfmod_layout_[module]( $layouts ){
+function acfmod_layout_[module]( $layouts ) {
 	$layouts[] = [module];
 
 	return $layouts;
@@ -25,7 +25,7 @@ function acfmod_layout_[module]( $layouts ){
 
 add_filter( 'acfmod/modules/[module]', 'acfmod_modules_[module]' );
 
-function acfmod_modules_[module](){
+function acfmod_modules_[module]() {
 	$output = get_sub_field( [module] );
 	return $output;
 }
