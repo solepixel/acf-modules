@@ -187,7 +187,7 @@ add_filter( 'body_class', 'acfmod_modular_body_class' );
  * @return array             Potentially modified array
  */
 function acfmod_modular_body_class( $body_class ) {
-	if( get_queried_object_id() && have_rows( '_acfmod_modules', get_queried_object_id() ) ):
+	if ( get_queried_object_id() && have_rows( '_acfmod_modules', get_queried_object_id() ) ) {
 		$body_class[] = 'modular';
 	}
 
